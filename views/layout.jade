@@ -1,7 +1,67 @@
 doctype html
+
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/terminal.css')
+    link(rel='stylesheet',href='https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.11/css/jquery.terminal.min.css')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.11/js/jquery.terminal.min.js')
+
+
   body
     block content
+    
+    div(id='term_demo' class='footer')
+        script.
+          jQuery(function($, undefined) {
+                $('#term_demo').terminal(function(command, term) {
+                    var proyectos=function(){
+                        term.echo('mixte      ------    un blog adaptado en lengua mixte[mixte.chamizo.org]');
+                        term.echo('sitio      ------    este sitio web[github]');
+                        term.echo('cosmos     ------    resúmenes de Cosmos, en español');
+                    }
+                    if(command==='proyectos'){
+                        proyectos();
+                    }
+                    else if(command==='estado'){
+                        window.location="/estado";
+                    }
+                    else if(command==='acerca'){
+                        window.location="/acerca";
+                    }
+                    else if(command==='mixte'){
+                        window.location="/mixte";
+                    }
+                    else if(command==='cosmos'){
+                        term.echo('estás por abandonar esta página...');
+                        term.read();
+                        window.location='https://medium.com/cosmos-en-espanol';
+                    }
+                    else if (command==='/'){
+                         window.location="/";
+                    }
+                    else if (command !== '') {
+                        term.greetings('chamizo.org');
+                        term.echo(command + '? no hay nada');    
+                    }
+                    else{
+                        term.greetings('chamizo.org');
+                        term.echo('/          ------    ir al inicio');
+                        term.echo('proyectos  ------    proyectos [actuales y en pausa]');
+                        term.echo('estado     ------    lo que estoy haciendo');
+                        term.echo('acerca     ------    about chamizo');   
+                    }
+
+                }, {
+                    greetings: 'chamizo.org - press [enter]',
+                    name: 'js_demo',
+                    height: 100,
+                    width: 600,
+                    prompt: '_> '
+                });
+            });
+
+        
+        

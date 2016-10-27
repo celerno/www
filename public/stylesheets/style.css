@@ -1,8 +1,33 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+*,
+*:before,
+*:after {
+  box-sizing: inherit !important;
+}
+
+body {
+  position: relative !important;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+  position: absolute !important;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem !important;
+  background-color: #efefef;
+  text-align: center;
 }
