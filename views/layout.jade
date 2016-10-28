@@ -17,24 +17,29 @@ html
         script.
           jQuery(function($, undefined) {
                 $('#term_demo').terminal(function(command, term) {
+                command = (command||'').toLowerCase();
                     var proyectos=function(){
-                        term.echo('mixte      ------    un blog adaptado en lengua mixte[mixte.chamizo.org]');
-                        term.echo('sitio      ------    este sitio web[github]');
+                        term.echo('mixe      ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
+                        term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('cosmos     ------    resúmenes de Cosmos, en español');
                     }
                     if(command==='proyectos'){
                         proyectos();
                     }
                     else if(command==='estado'){
+                        term.echo('estás por abandonar esta página...');
+                        term.read();
                         window.location="https://mx.linkedin.com/in/celerno";
                     }
                     else if(command==='acerca'){
+                        term.echo('estás por abandonar esta página...');
+                        term.read();
                         window.location="https://about.me/celerno";
                     }
                     else if(command==='mixte'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location="http://mixte.chamizo.org";
+                        window.location="http://mixe.chamizo.org";
                     }
                     else if(command==='cosmos'){
                         term.echo('estás por abandonar esta página...');
@@ -61,7 +66,7 @@ html
                     }
 
                 }, {
-                    greetings: 'chamizo.org - [enter]',
+                    greetings: 'chamizo.org - [hit enter]',
                     name: 'js_demo',
                     height: 100,
                     width: 600,
