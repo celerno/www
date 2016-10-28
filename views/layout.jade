@@ -41,23 +41,27 @@ html
                         term.read();
                         window.location='https://medium.com/cosmos-en-espanol';
                     }
+                else if(command==='sitio'){
+                        term.echo('estás por abandonar esta página...');
+                        term.read();
+                        window.location='https://github.com/celerno';
+                    }
                     else if (command==='/'){
                          window.location="/";
                     }
                     else if (command !== '') {
-                        term.greetings('chamizo.org');
-                        term.echo(command + '? no hay nada');    
+                        term.echo(command + '? no hay nada / there\'s nothing like that');    
                     }
                     else{
                         term.greetings('chamizo.org');
-                        term.echo('/          ------    ir al inicio');
-                        term.echo('proyectos  ------    proyectos [actuales y en pausa]');
-                        term.echo('estado     ------    lo que estoy haciendo');
-                        term.echo('acerca     ------    about chamizo');   
+                        term.echo('/          ------    ir al inicio / go to homepage');
+                        term.echo('proyectos  ------    proyectos / personal projects');
+                        term.echo('estado     ------    lo que estoy haciendo / where I\'m now');
+                        term.echo('acerca     ------    sobre mí / about me');
                     }
 
                 }, {
-                    greetings: 'chamizo.org - press [enter]',
+                    greetings: 'chamizo.org - [enter]',
                     name: 'js_demo',
                     height: 100,
                     width: 600,

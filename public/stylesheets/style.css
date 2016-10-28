@@ -15,10 +15,15 @@ body {
   margin-bottom: 0px;
   padding-bottom: 0rem !important;
   min-height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Courier New", Arial, sans-serif;
 }
 
-
+span.sp{
+  color:black;
+}
+span.en{
+  color:red;
+}
 /**
  * Footer Styles
  */
