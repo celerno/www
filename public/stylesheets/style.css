@@ -12,7 +12,8 @@ html {
 body {
   position: relative !important;
   margin: 0;
-  padding-bottom: 6rem;
+  margin-bottom: 0px;
+  padding-bottom: 0rem !important;
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -25,8 +26,8 @@ body {
 .footer {
   position: absolute !important;
   right: 0;
-  bottom: 0;
-  left: 0;
+  bottom: 360px;
+  left: 80px;
   padding: 1rem !important;
   background-color: #efefef;
   text-align: center;
