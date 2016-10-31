@@ -15,7 +15,18 @@ html
     
     div(id='term_demo' class='footer')
         script.
-          jQuery(function($, undefined) {
+         function animOut(element) {
+               $(element || this)
+               .delay(150).animate({opacity:0.1},2000).delay(150)
+               .animate({opacity:1},2000)
+               .delay(150).fadeOut(2000); 
+         }
+         function animIn(element) {
+               $(element || this)
+               .delay(150).fadeIn(2000)
+               .delay(150).animate({opacity:1},2000); 
+         }
+         jQuery(function($, undefined) {
                 $('#term_demo').terminal(function(command, term) {
                 command = (command||'').toLowerCase();
                     var proyectos=function(){
@@ -46,7 +57,7 @@ html
                         term.read();
                         window.location='https://medium.com/cosmos-en-espanol';
                     }
-                else if(command==='sitio'){
+                    else if(command==='sitio'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
                         window.location='https://github.com/celerno/www';
@@ -56,6 +67,14 @@ html
                     }
                     else if (command !== '') {
                         term.echo(command + '? no hay nada / there\'s nothing like that');    
+                    }
+                    else if(command ==='mx'){
+                      animOut($('.en'));
+                      animIn($('.sp'));
+                    }
+                    else if(command ==='us'){
+                      animOut($('.sp'));
+                      animIn($('.en'));
                     }
                     else{
                         term.greetings('chamizo.org');
