@@ -17,9 +17,8 @@ html
         script.
          function animOut(element) {
                $(element || this)
-               .delay(150).animate({opacity:0.1},2000).delay(150)
-               .animate({opacity:1},2000)
-               .delay(150).fadeOut(2000); 
+               .delay(300).animate({opacity:0.01},3000).delay(5000)
+               .animate({opacity:1},3000); 
          }
          function animIn(element) {
                $(element || this)
@@ -27,22 +26,22 @@ html
                .delay(150).animate({opacity:1},2000); 
          }
          jQuery(function($, undefined) {
-                $('#term_demo').terminal(function(command, term) {
+                var terminal = $('#term_demo').terminal(function(command, term) {
                 command = (command||'').toLowerCase();
                     var proyectos=function(){
-                        term.echo('mixe      ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
+                        term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('cosmos     ------    resúmenes de Cosmos, en español');
                     }
-                    if(command==='proyectos'){
+                    if(command==='proyectos' || command==='projects'){
                         proyectos();
                     }
-                    else if(command==='estado'){
+                    else if(command==='linkedin'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
                         window.location="https://mx.linkedin.com/in/celerno";
                     }
-                    else if(command==='acerca'){
+                    else if(command==='acerca' || command==='about'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
                         window.location="https://about.me/celerno";
@@ -57,41 +56,48 @@ html
                         term.read();
                         window.location='https://medium.com/cosmos-en-espanol';
                     }
-                    else if(command==='sitio'){
+                    else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
                         window.location='https://github.com/celerno/www';
                     }
-                    else if (command==='/'){
+                    else if(command === 'mx'){
+                      animOut($('.en'));
+                    }
+                    else if(command === 'us'){
+                      animOut($('.sp'));
+                    }
+                    else if (command==='/' || command==='home' || command ==='inicio'){
                          window.location="/";
                     }
+                    else if (command==='' || command==='menu' || command ==='menú'){
+                        term.echo('/                   ------    ir al inicio / go to homepage');
+                        term.echo('?                   ------    ayuda / help');
+                        term.echo('proyectos/projects  ------    proyectos / personal projects');
+                        term.echo('acerca/about        ------    sobre mí / about me');
+                        term.echo('mx/us               ------    español / english');
+                    }
+                    else if (command === '?' || command ==='ayuda' || command==='help'){
+                        term.echo('Ayuda / Help: ');    
+                        term.echo('escribe [menú] / type [menu]');    
+                        term.echo('presiona [Entrar] / hit [Enter]');
+                        term.echo('escribe la [opción] deseada / type [option] of your choice');
+                    }
                     else if (command !== '') {
-                        term.echo(command + '? no hay nada / there\'s nothing like that');    
+                        term.echo('[' + command + '] (._. \')?');
                     }
-                    else if(command ==='mx'){
-                      animOut($('.en'));
-                      animIn($('.sp'));
-                    }
-                    else if(command ==='us'){
-                      animOut($('.sp'));
-                      animIn($('.en'));
-                    }
-                    else{
-                        term.greetings('chamizo.org');
-                        term.echo('/          ------    ir al inicio / go to homepage');
-                        term.echo('proyectos  ------    proyectos / personal projects');
-                        term.echo('estado     ------    lo que estoy haciendo / where I\'m now');
-                        term.echo('acerca     ------    sobre mí / about me');
-                    }
+                }
 
-                }, {
-                    greetings: 'chamizo.org - [hit enter]',
+                , {
+                    greetings: 'chamizo.org - []',
                     name: 'js_demo',
                     height: 100,
                     width: 600,
                     prompt: '_> '
                 });
+                terminal.exec('', true);
             });
+
 
         
         
