@@ -14,8 +14,12 @@ body {
   margin: 0;
   margin-bottom: 0px;
   padding-bottom: 0rem !important;
-  min-height: 100%;
+  min-height: 70%;
   font-family: "Courier New", Arial, sans-serif;
+}
+.content{
+  position: relative; !important;
+
 }
 
 span.sp{
@@ -31,7 +35,7 @@ span.en{
 .footer {
   position: absolute !important;
   right: 0;
-  bottom: 360px;
+  bottom: 0px;
   left: 80px;
   padding: 1rem !important;
   background-color: #efefef;

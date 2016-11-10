@@ -8,6 +8,10 @@ html
     link(rel='stylesheet',href='https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.11/css/jquery.terminal.min.css')
     script(src='https://code.jquery.com/jquery-3.1.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.11/js/jquery.terminal.min.js')
+    script(src='/gif.js')
+    script(src='/gif.worker.js')    
+    script(src='/javascripts/gifHelper.js')
+    
 
 
   body
@@ -76,6 +80,10 @@ html
                         term.echo('proyectos/projects  ------    proyectos / personal projects');
                         term.echo('acerca/about        ------    sobre mí / about me');
                         term.echo('mx/us               ------    español / english');
+                        term.echo('gif [text]          ------    pone gifs en 16c/frame 400x100')
+                    }
+                    else if (command.startsWith('gif')){
+                        gifText(document, command.substring(4));
                     }
                     else if (command === '?' || command ==='ayuda' || command==='help'){
                         term.echo('Ayuda / Help: ');    
