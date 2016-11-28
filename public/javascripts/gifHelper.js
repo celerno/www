@@ -10,20 +10,23 @@ var gifText = function(d, text){
       transparent:true
     });
 
-    // add a image element
-   
-	/*
-	ctx.fillText("I am the world'text",20,50);
-    ctx.strokeText("I am the world'text",20,50);
-    gif.addFrame(c, {delay:2000});
-    */
-    let size = 16;
-    var chunks = text.length / size + ((text.length % size > 0) ? 1 : 0);
+    let size = 21;
+    var palabras = text.split(' ');
     var arr = new Array();
+    let texto = '';
 
-    for(var i = 0, j = 0, l = text.length; i < l; i += size, j++){
-        arr.push(text.substring(i, Math.min(l, i + size)));
+      for (var t = 0; t < palabras.length; t++) 
+      {
+        if(texto.length >0 && texto.length + 1 + palabras[t].length > 21)
+          {
+            arr.push(texto);
+            texto='';
+          }
+        texto += (texto.length===0?palabras[t]: ' ' + palabras[t]);
       }
+    if(texto.length>0){
+      arr.push(texto);
+    }
 
 
 
@@ -40,8 +43,8 @@ var gifText = function(d, text){
     ctx.fillStyle = "#5a6372";
     ctx.strokeStyle = "#5a6372";
    
-    ctx.fillText(arr[i],20 + ((size - arr[i].length) * 10), 50);
-    ctx.strokeText(arr[i],20  + ((size- arr[i].length) * 10), 50);
+    ctx.fillText(arr[i], ((size - arr[i].length) * 10), 50);
+    ctx.strokeText(arr[i], ((size- arr[i].length) * 10), 50);
     gif.addFrame(c, {delay:2000});
     if(i===(arr.length - 1)){
       let blank = d.createElement('canvas');

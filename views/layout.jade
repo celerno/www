@@ -11,100 +11,12 @@ html
     script(src='/gif.js')
     script(src='/gif.worker.js')    
     script(src='/javascripts/gifHelper.js')
-    
-
-
   body
+    div(id='term_demo')
+        script(src='/javascripts/layout.js')
     block content
     
-    div(id='term_demo' class='footer')
-        script.
-         function animOut(element) {
-               $(element || this)
-               .delay(300).animate({opacity:0.01},3000).delay(5000)
-               .animate({opacity:1},3000); 
-         }
-         function animIn(element) {
-               $(element || this)
-               .delay(150).fadeIn(2000)
-               .delay(150).animate({opacity:1},2000); 
-         }
-         jQuery(function($, undefined) {
-                var terminal = $('#term_demo').terminal(function(command, term) {
-                command = (command||'').toLowerCase();
-                    var proyectos=function(){
-                        term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
-                        term.echo('sitio      ------    source de este sitio[github]');
-                        term.echo('cosmos     ------    resúmenes de Cosmos, en español');
-                    }
-                    if(command==='proyectos' || command==='projects'){
-                        proyectos();
-                    }
-                    else if(command==='linkedin'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location="https://mx.linkedin.com/in/celerno";
-                    }
-                    else if(command==='acerca' || command==='about'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location="https://about.me/celerno";
-                    }
-                    else if(command==='mixe'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location="http://mixe.chamizo.org";
-                    }
-                    else if(command==='cosmos'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location='https://medium.com/cosmos-en-espanol';
-                    }
-                    else if(command==='sitio' || command==='site'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location='https://github.com/celerno/www';
-                    }
-                    else if(command === 'mx'){
-                      animOut($('.en'));
-                    }
-                    else if(command === 'us'){
-                      animOut($('.sp'));
-                    }
-                    else if (command==='/' || command==='home' || command ==='inicio'){
-                         window.location="/";
-                    }
-                    else if (command==='' || command==='menu' || command ==='menú'){
-                        term.echo('/                   ------    ir al inicio / go to homepage');
-                        term.echo('?                   ------    ayuda / help');
-                        term.echo('proyectos/projects  ------    proyectos / personal projects');
-                        term.echo('acerca/about        ------    sobre mí / about me');
-                        term.echo('mx/us               ------    español / english');
-                        term.echo('gif [text]          ------    pone gifs en 16c/frame 400x100')
-                    }
-                    else if (command.startsWith('gif')){
-                        gifText(document, command.substring(4));
-                    }
-                    else if (command === '?' || command ==='ayuda' || command==='help'){
-                        term.echo('Ayuda / Help: ');    
-                        term.echo('escribe [menú] / type [menu]');    
-                        term.echo('presiona [Entrar] / hit [Enter]');
-                        term.echo('escribe la [opción] deseada / type [option] of your choice');
-                    }
-                    else if (command !== '') {
-                        term.echo('[' + command + '] (._. \')?');
-                    }
-                }
-
-                , {
-                    greetings: 'chamizo.org - []',
-                    name: 'js_demo',
-                    height: 100,
-                    width: 600,
-                    prompt: '_> '
-                });
-                terminal.exec('', true);
-            });
+         
 
 
         

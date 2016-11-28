@@ -11,7 +11,7 @@ html {
 
 body {
   position: relative !important;
-  margin: 0;
+ 
   margin-bottom: 0px;
   padding-bottom: 0rem !important;
   min-height: 70%;
@@ -19,7 +19,9 @@ body {
 }
 .content{
   position: relative; !important;
-
+  margin-left: 80px;
+  margin-right:80px;
+  margin-top: 10%;
 }
 
 span.sp{
@@ -31,7 +33,9 @@ span.en{
 /**
  * Footer Styles
  */
+.about{
 
+}
 .footer {
   position: absolute !important;
   right: 0;
@@ -40,4 +44,12 @@ span.en{
   padding: 1rem !important;
   background-color: #efefef;
   text-align: center;
+}
+.text-right{
+   float: right;
+   margin: 0 0 10px 10px;
+}
+.text-left{
+   float: left;
+   margin:10px 10px 0 0;
 }
