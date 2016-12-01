@@ -54,7 +54,7 @@ var gifText = function(d, text){
 
     gif.on('finished', function(img) {
         var render = d.getElementById('render');
-	if(render===undefined){
+	if(!render){
 		render = d.createElement('img');
 		var div = d.createElement('div');
 		div.style.textAlign='center';
