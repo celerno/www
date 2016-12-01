@@ -54,6 +54,14 @@ var gifText = function(d, text){
 
     gif.on('finished', function(img) {
         var render = d.getElementById('render');
+	if(render===undefined){
+		render = d.createElement('img');
+		var div = d.createElement('div');
+		div.style.textAlign='center';
+		div.style.width='100%';
+		div.appendChild(render);
+		d.body.appendChild(div);
+	}
         render.src=URL.createObjectURL(img);
     });
     gif.render();
