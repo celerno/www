@@ -12,5 +12,8 @@ router.get('/mixe',function(req, res, next){
 router.get('/about', function(req,res,next){
 	res.render('about', { title: 'chamizo.org - acerca de...'});
 });
+router.get('/contact',function(req,res,next){
+	res.render('contact',{title:'chamizo.org - contacto'});
+})
 
 module.exports = router;

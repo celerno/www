@@ -57,6 +57,7 @@ var gifText = function(d, text){
 	if(!render){
 		render = d.createElement('img');
 		var div = d.createElement('div');
+    render.setAttribute('id','render');
 		div.style.textAlign='center';
 		div.style.width='100%';
 		div.appendChild(render);

@@ -1,12 +1,7 @@
 function animOut(element) {
                $(element || this)
-               .delay(300).animate({opacity:0.01},3000).delay(5000)
+               .animate({opacity:0.01},3000)
                .animate({opacity:1},3000); 
-         }
-         function animIn(element) {
-               $(element || this)
-               .delay(150).fadeIn(2000)
-               .delay(150).animate({opacity:1},2000); 
          }
          jQuery(function($, undefined) {
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
@@ -17,13 +12,18 @@ function animOut(element) {
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('cosmos     ------    resúmenes de Cosmos, en español');
                     }
+                    var utils=function(){
+                     term.echo('mx/us               ------    español / english');
+                     term.echo('gif [text]          ------    gifs en 21c/frame 400x100');
+                    }
                     if(command==='proyectos' || command==='projects'){
                         proyectos();
                     }
-                    else if(command==='linkedin'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location="https://mx.linkedin.com/in/celerno";
+                    else if(command==='tools' || command==='cosas'){
+                        utils();
+                    }
+                    else if(command==='contact' || command==='contacto'){
+                        window.location="/contact";
                     }
                     else if(command==='acerca' || command==='about'){
                      
@@ -54,12 +54,11 @@ function animOut(element) {
                          window.location="/";
                     }
                     else if (command==='' || command==='menu' || command ==='menú'){
-                        term.echo('/                   ------    ir al inicio / go to homepage');
-                        term.echo('?                   ------    ayuda / help');
-                        term.echo('proyectos/projects  ------    proyectos / personal projects');
+                        term.echo('inicio/home         ------    &#8962;');
+                        term.echo('proyectos/projects  ------    proyectos / projects');
                         term.echo('acerca/about        ------    sobre mí / about me');
-                        term.echo('mx/us               ------    español / english');
-                        term.echo('gif [text]          ------    gifs en 21c/frame 400x100')
+                        term.echo('cosas/tools         ------    &#128295;');
+                        term.echo('?                   ------    &#9072;');
                     }
                     else if (command === 'gif'){
                         gifText(document, cmdNargs.substring(4));
