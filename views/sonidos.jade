@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    div(class='content')
+        h1 ¿cómo suena tu ciudad?
+        button(id='cargar') así...
+        script.
+            $('#cargar').click(function(e){
+                e.preventDefault();
+                alert('aquí se podrán cargar nuevos sonidos -de algún modo-');
+            });
+
+

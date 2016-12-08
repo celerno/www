@@ -11,6 +11,7 @@ function animOut(element) {
                         term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('cosmos     ------    resúmenes de Cosmos, en español');
+                        term.echo('ruido/noise -----    ruidos de ciudad/city noise');
                     }
                     var utils=function(){
                      term.echo('mx/us               ------    español / english');
@@ -28,6 +29,10 @@ function animOut(element) {
                     else if(command==='acerca' || command==='about'){
                      
                         window.location.href="/about";
+                    }
+                    else if(command==='ruido' || command==='noise'){
+                     
+                        window.location.href="/ruidos";
                     }
                     else if(command==='mixe'){
                         term.echo('estás por abandonar esta página...');

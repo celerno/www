@@ -14,6 +14,9 @@ router.get('/about', function(req,res,next){
 });
 router.get('/contact',function(req,res,next){
 	res.render('contact',{title:'chamizo.org - contacto'});
-})
+});
+router.get('/ruidos', function(req,res,next){
+	res.render('sonidos', { title: 'chamizo.org - biblioteca pública de ruidos de ciudad...'});
+});
 
 module.exports = router;

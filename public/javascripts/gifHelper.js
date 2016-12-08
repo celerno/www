@@ -25,7 +25,7 @@ var gifText = function(d, text){
         texto += (texto.length===0?palabras[t]: ' ' + palabras[t]);
       }
     if(texto.length>0){
-      arr.push(texto);
+      arr.push(texto.trim());
     }
 
 
@@ -42,7 +42,7 @@ var gifText = function(d, text){
     ctx.font = "30px Courier New";
     ctx.fillStyle = "#5a6372";
     ctx.strokeStyle = "#5a6372";
-   
+    arr[i] = arr[i].trim();
     ctx.fillText(arr[i], ((size - arr[i].length) * 10), 50);
     ctx.strokeText(arr[i], ((size- arr[i].length) * 10), 50);
     gif.addFrame(c, {delay:2000});
