@@ -10,7 +10,7 @@ function animOut(element) {
                     var proyectos=function(){
                         term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
                         term.echo('sitio      ------    source de este sitio[github]');
-                        term.echo('cosmos     ------    resúmenes de Cosmos, en español');
+                        term.echo('blog       ------    blog personal / y sobre cosmos en español');
                         term.echo('ruido/noise -----    ruidos de ciudad/city noise');
                     }
                     var utils=function(){
@@ -39,10 +39,10 @@ function animOut(element) {
                         term.read();
                         window.location="http://mixe.chamizo.org";
                     }
-                    else if(command==='cosmos'){
+                    else if(command==='blog'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location='https://medium.com/cosmos-en-espanol';
+                        window.location='https://medium.com/@hablaescribe';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
