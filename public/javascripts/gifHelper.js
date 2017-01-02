@@ -6,7 +6,7 @@ var gifText = function(d, text){
       background:'white',
       repeat:0,
       width: 400,
-      height: 100,
+      height: 120,
       transparent:true
     });
 
