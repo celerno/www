@@ -42,7 +42,7 @@ function animOut(element) {
                     else if(command==='blog'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location='https://medium.com/@hablaescribe';
+                        window.location='blog.chamizo.org';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
