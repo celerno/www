@@ -30,6 +30,8 @@ La navegación es mediante un menú tipo terminal de sistema, elaborado en jQuer
 
 ![screenshot](/public/images/site_screenshot.png "screenshot") 
 
-Elegí este tipo de navegación porque quise hacerlo desde 1997 y no me había dado tiempo ni había dedicado recursos para ello. Tardé veinte años. Escribir un poco sobre el sitio era lo menos que podía hacer.
+Elegí este tipo de navegación porque así quise hacerlo en 1997, con este diseño. 
+
+No me había dado tiempo ni había dedicado recursos para ello. Tardé veinte años. Escribir un poco sobre el sitio era lo menos que podía hacer. Aún no termino el sitio y aún no termino de escribir sobre él.
 
 #
