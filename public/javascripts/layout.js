@@ -47,7 +47,7 @@ function animOut(element) {
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location='https://github.com/celerno/www';
+                        window.location='https://github.com/celerno/www/blob/master/README.md';
                     }
                     else if(command === 'mx'){
                       animOut($('.en'));
