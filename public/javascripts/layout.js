@@ -5,6 +5,9 @@ function animOut(element) {
          }
          jQuery(function($, undefined) {
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
+                if(cmdNargs!=='')
+                    $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
+                
                 let command = (cmdNargs.split(' ')[0]||'').toLowerCase();
 
                     var proyectos=function(){
