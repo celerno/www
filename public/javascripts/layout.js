@@ -18,7 +18,7 @@ function animOut(element) {
                     }
                     var utils=function(){
                      term.echo('mx/us               ------    español / english');
-                     term.echo('gif [text]          ------    gifs en 21c/frame 400x100');
+                     term.echo('gif I\'m the world   ------    gifs en 21c/frame 400x100');
                     }
                     if(command==='proyectos' || command==='projects'){
                         proyectos();
@@ -83,7 +83,7 @@ function animOut(element) {
                 }
 
                 , {
-                    greetings: 'chamizo.org - []',
+                    greetings: 'chamizo.org - [toda entrada es &#128190; / inputs here are &#128190;]',
                     name: 'js_demo',
                     height: 120,
                     prompt: '_> '
