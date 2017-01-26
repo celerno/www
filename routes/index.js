@@ -45,5 +45,6 @@ router.post('/cmd',function(req,res,next){
 	  newCmd.save();
 
 	console.log(newCmd);
+	next();
 });
 module.exports = router;
