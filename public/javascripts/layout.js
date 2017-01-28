@@ -6,7 +6,7 @@ function animOut(element) {
          jQuery(function($, undefined) {
 
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
-                var lastMenu == '';
+                var lastMenu = '';
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
                 
@@ -24,9 +24,11 @@ function animOut(element) {
                     }
                     if(command==='proyectos' || command==='projects'){
                         proyectos();
+                        lastMenu='proyectos';
                     }
                     else if(command==='tools' || command==='cosas'){
                         utils();
+                        lastMenu='cosas';
                     }
                     else if(command==='contact' || command==='contacto'){
                         window.location="/contact";
@@ -75,6 +77,7 @@ function animOut(element) {
                         else if (lastMenu=='cosas'){
                             utils();
                         }
+                        lastMenu='';
                     }
                     else if (command === 'gif'){
                         gifText(document, cmdNargs.substring(4));
