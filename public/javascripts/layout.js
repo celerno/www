@@ -4,7 +4,9 @@ function animOut(element) {
                .animate({opacity:1},3000); 
          }
          jQuery(function($, undefined) {
+
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
+                var lastMenu == '';
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
                 
@@ -67,6 +69,12 @@ function animOut(element) {
                         term.echo('acerca/about        ------    sobre mí / about me');
                         term.echo('cosas/tools         ------    &#128295;');
                         term.echo('?                   ------    &#9072;');
+                        if(lastMenu==='proyectos'){
+                            proyectos();
+                        }
+                        else if (lastMenu=='cosas'){
+                            utils();
+                        }
                     }
                     else if (command === 'gif'){
                         gifText(document, cmdNargs.substring(4));
