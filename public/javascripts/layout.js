@@ -4,9 +4,9 @@ function animOut(element) {
                .animate({opacity:1},3000); 
          }
          jQuery(function($, undefined) {
-
+            var lastMenu = '';
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
-                var lastMenu = '';
+                
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
                 
@@ -17,18 +17,18 @@ function animOut(element) {
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('blog       ------    blog personal / y sobre cosmos en español');
                         term.echo('ruido/noise -----    ruidos de ciudad/city noise');
+                        lastMenu='proyectos';
                     }
                     var utils=function(){
                      term.echo('mx/us               ------    español / english');
                      term.echo('gif I\'m the world   ------    gifs en 21c/frame 400x100');
+                     lastMenu='cosas';
                     }
                     if(command==='proyectos' || command==='projects'){
                         proyectos();
-                        lastMenu='proyectos';
                     }
                     else if(command==='tools' || command==='cosas'){
                         utils();
-                        lastMenu='cosas';
                     }
                     else if(command==='contact' || command==='contacto'){
                         window.location="/contact";
