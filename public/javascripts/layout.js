@@ -58,10 +58,10 @@ function animOut(element) {
                     else if(command === 'us'){
                       animOut($('.sp'));
                     }
-                    else if (command==='/' || command==='home' || command ==='inicio' || command ==='ls' || command=='dir'){
+                    else if (command==='/' || command==='home' || command ==='inicio'){
                          window.location="/";
                     }
-                    else if (command==='' || command==='menu' || command ==='menú'){
+                    else if (command==='' || command==='menu' || command ==='menú'  || command ==='ls' || command=='dir'){
                         term.echo('inicio/home         ------    &#8962;');
                         term.echo('proyectos/projects  ------    proyectos / projects');
                         term.echo('acerca/about        ------    sobre mí / about me');
