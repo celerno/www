@@ -58,7 +58,7 @@ function animOut(element) {
                     else if(command === 'us'){
                       animOut($('.sp'));
                     }
-                    else if (command==='/' || command==='home' || command ==='inicio'){
+                    else if (command==='/' || command==='home' || command ==='inicio' || command ==='ls' || command=='dir'){
                          window.location="/";
                     }
                     else if (command==='' || command==='menu' || command ==='menú'){
