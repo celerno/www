@@ -49,7 +49,7 @@ function animOut(element) {
                     else if(command==='blog'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location='blog.chamizo.org';
+                        window.location='http://blog.chamizo.org';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
@@ -83,14 +83,30 @@ function animOut(element) {
                         gifText(document, cmdNargs.substring(4));
                     }
                     else if (command === '?' || command ==='ayuda' || command==='help'){
-                        term.echo('Ayuda / Help: ');    
-                        term.echo('escribe [menú] / type [menu]');    
-                        term.echo('presiona [Entrar] / hit [Enter]');
-                        term.echo('escribe la [opción] deseada / type [option] of your choice');
+                        if(command==='?'){
+                            term.echo('Ayuda / Help: ');   
+                            term.echo('este sitio utiliza navegación por comandos / this site uses nav by command');
+                            term.echo('escribe [menú]&#9166;  / type [menu]&#9166; for main menu / para ir al menú principal.');    
+                            term.echo('escribe la [opción] deseada / type [option] of your choice');
+                        }
+                        else if (command==='ayuda') {
+                            term.echo('Ayuda:');   
+                            term.echo('este sitio utiliza navegación por comandos.');
+                            term.echo('escribe [menú]&#9166; para ir al menú principal.');    
+                            term.echo('elige una de las opciones presentadas y presiona enter &#9166;');
+                        }
+                        else if (command==='help') {
+                            term.echo('Ayuda:');   
+                            term.echo('this site uses nav by command.');
+                            term.echo('type [menu]&#9166; for main menu');    
+                            term.echo('type the [option] of your choice and press enter &#9166;');
+
+                        }
+
                     }
                     else if (command !== '') {
-                        term.echo('aún no reconozco la palabra [' + command + '] (._. \')?');
-                        term.echo('type [help]');
+                        term.echo('aún no reconozco la palabra [' + command + '] (._. \')');
+                        term.echo('escribe [ayuda] &#9166; / type [help] &#9166;');
                     }
                 }
 
