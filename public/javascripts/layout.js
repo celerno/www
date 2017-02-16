@@ -89,7 +89,8 @@ function animOut(element) {
                         term.echo('escribe la [opción] deseada / type [option] of your choice');
                     }
                     else if (command !== '') {
-                        term.echo('[' + command + '] (._. \')?');
+                        term.echo('aún no reconozco la palabra [' + command + '] (._. \')?');
+                        term.echo('type [help]');
                     }
                 }
 
