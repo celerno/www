@@ -30,6 +30,9 @@ router.get('/contact',function(req,res,next){
 router.get('/ruidos', function(req,res,next){
 	res.render('sonidos', { title: 'chamizo.org - biblioteca pública de ruidos de ciudad...'});
 });
+router.get('/hablapormi', function(req,res,next){
+	res.render('hablapormi', { title: 'chamizo.org - tuitea en nombre de la cuenta @hablapormi...'});
+});
 
 router.post('/cmd',function(req,res,next){
 	//specific time
