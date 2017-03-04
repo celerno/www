@@ -4,7 +4,14 @@ var mongoose = require('mongoose');
 var db 		 = require('../db');
 var cmd = mongoose.model('cmd');
 var date 	 = new Date();
-
+var TwitterPackage = require('twitter');
+var secret = {
+  consumer_key: process.env.consumer_key,
+  consumer_secret: process.env.consumer_secret,
+  access_token_key: process.env.access_token_key,
+  access_token_secret: process.env.access_token_secret
+};
+var tclient = new TwitterPackage(secret);
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'chamizo.org' });
@@ -44,7 +51,31 @@ router.post('/cmd',function(req,res,next){
 	  });
 	  newCmd.save();
 
-	console.log(newCmd);
+	//console.log(newCmd);
 	next();
 });
+
+router.post('/tuit', function(req, res, next){
+	try{
+	
+  	var tuit = req.body.text;
+  	console.log('tuit: ' +tuit);
+  	tuit = (tuit.length>127? tuit.substring(0,127): tuit) + ' - #hablapormí';
+
+  	tclient.post('statuses/update', {status: tuit},  function(error, tweet, response){
+		if(error){
+			    console.log(error);
+			  }
+			  else{
+				//console.log(tweet);  // Tweet body.
+			  	//console.log(response);  // Raw response object.
+			  }
+		});
+  }
+  catch(error){
+		console.log(error.message);
+  }
+  next();
+});
+
 module.exports = router;

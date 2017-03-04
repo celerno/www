@@ -56,6 +56,9 @@ function animOut(element) {
                         term.read();
                         window.location='https://github.com/celerno/www/blob/master/README.md';
                     }
+                    else if(command ==='tuit' || command==='tweet'){
+                        $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(command.length, 127)}});
+                    }
                     else if(command === 'mx'){
                       animOut($('.en'));
                     }
