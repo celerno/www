@@ -10,6 +10,26 @@ function animOut(element) {
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
                 
+                RegExp hablapormi=/hablapormi/;
+                if(hablapormi.test(window.location)){
+                    var respuesta = '';
+                    RegExp adios = /adios/;
+                    while(adios.test(respuesta)===false){
+                        
+                        $.ajax({
+                                method: "POST", async:false, cache:false, 
+                                ,url: "/enlace",data: { text: cmdNargs }
+                                ,error:function(){
+                                    respuesta='adios'; //how to send to parent thread?
+                                }
+                                ,success: function(respuesta){
+                                    respuesta = this.respuesta; //possible?
+                                }   
+                            });
+                        term.echo(respuesta);
+                    }
+                }
+
                 let command = (cmdNargs.split(' ')[0]||'').toLowerCase();
 
                     var proyectos=function(){
@@ -21,11 +41,15 @@ function animOut(element) {
                     }
                     var utils=function(){
                      term.echo('mx/us               ------    español / english');
-                     term.echo('gif I\'m the world   ------    gifs en 21c/frame 400x100');
+                     term.echo('gif [text]          ------    [text] en un .gif en 21c/frame 400x100');
+                     term.echo('hablapormi          ------    cuenta conectada para tutiear lo que escribas')
                      lastMenu='cosas';
                     }
                     if(command==='proyectos' || command==='projects'){
                         proyectos();
+                    }
+                    else if(command==='hablapormi' || command==='habla'){
+                         window.location="/hablapormi";
                     }
                     else if(command==='tools' || command==='cosas'){
                         utils();

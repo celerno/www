@@ -57,7 +57,21 @@ router.post('/cmd',function(req,res,next){
 	//console.log(newCmd);
 	next();
 });
+router.post('/enlace', function(req,res, next){
+	require('')
+	try{
 
+		var analisis = robot.analiza(req.text);
+        var pensamiento = robot.piensa(analisis);
+        var respuesta = robot.responde(pensamiento);
+        res.send(respuesta);
+	}
+	catch(error){
+		console.log(error.message);
+		res.send('adios hubo un error');
+	}
+next();
+});
 router.post('/tuit', function(req, res, next){
 	try{
 	
