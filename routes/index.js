@@ -12,6 +12,7 @@ var secret = {
   access_token_secret: process.env.access_token_secret
 };
 var tclient = new TwitterPackage(secret);
+var robot = require('../robot.js');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'chamizo.org' });
@@ -57,14 +58,15 @@ router.post('/cmd',function(req,res,next){
 	//console.log(newCmd);
 	next();
 });
-router.post('/enlace', function(req,res, next){
-	require('')
+router.post('/enlace', function(req, res, next){
+	
 	try{
-
-		var analisis = robot.analiza(req.text);
-        var pensamiento = robot.piensa(analisis);
-        var respuesta = robot.responde(pensamiento);
-        res.send(respuesta);
+		if(req.body.text !==undefined && req.body.text.length>1){
+			var analisis = robot.analiza(req.body.text);
+	        var pensamiento = robot.piensa(tclient, analisis);
+	        var respuesta = robot.responde(pensamiento, analisis);
+	        res.send(respuesta);
+    	}
 	}
 	catch(error){
 		console.log(error.message);
@@ -94,5 +96,6 @@ router.post('/tuit', function(req, res, next){
   }
   next();
 });
+
 
 module.exports = router;

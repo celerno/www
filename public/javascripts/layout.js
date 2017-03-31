@@ -10,24 +10,29 @@ function animOut(element) {
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
                 
-                RegExp hablapormi=/hablapormi/;
+                var hablapormi=/hablapormi/;
+                var adios = /adios/;
+                if(adios.test(cmdNargs)===true){
+                    window.location = '/';
+                }
                 if(hablapormi.test(window.location)){
                     var respuesta = '';
-                    RegExp adios = /adios/;
-                    while(adios.test(respuesta)===false){
-                        
-                        $.ajax({
-                                method: "POST", async:false, cache:false, 
-                                ,url: "/enlace",data: { text: cmdNargs }
-                                ,error:function(){
-                                    respuesta='adios'; //how to send to parent thread?
-                                }
-                                ,success: function(respuesta){
-                                    respuesta = this.respuesta; //possible?
-                                }   
-                            });
-                        term.echo(respuesta);
+                    
+                    if(cmdNargs.split(' ').length > 1){
+                            $.ajax({
+                                    method: "POST", async:false, cache:false 
+                                    ,url: "/enlace",data: { text: cmdNargs }
+                                    ,error:function(err){
+                                        respuesta='adios'; //how to send to parent thread?
+                                    }
+                                    ,success: function(resp){
+                                        respuesta =resp;//possible?
+                                    }
+                                });
+                            term.echo(respuesta);
                     }
+                    cmdNargs = '';
+                    return;
                 }
 
                 let command = (cmdNargs.split(' ')[0]||'').toLowerCase();

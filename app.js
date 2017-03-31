@@ -9,7 +9,7 @@ var db     = require('./db');
 var post_model = mongoose.model('cmd');
 var routes = require('./routes/index');
 var app = express();
-var robot = require('./robot.js');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
