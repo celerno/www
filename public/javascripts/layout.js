@@ -19,17 +19,19 @@ function animOut(element) {
                     var respuesta = '';
                     
                     if(cmdNargs.split(' ').length > 1){
+
                             $.ajax({
                                     method: "POST", async:false, cache:false 
                                     ,url: "/enlace",data: { text: cmdNargs }
                                     ,error:function(err){
-                                        respuesta='adios'; //how to send to parent thread?
+                                        console.log(err); //how to send to parent thread?
                                     }
                                     ,success: function(resp){
-                                        respuesta =resp;//possible?
+                                        term.echo(resp);
                                     }
                                 });
-                            term.echo(respuesta);
+
+                            //term.echo(respuesta);
                     }
                     cmdNargs = '';
                     return;

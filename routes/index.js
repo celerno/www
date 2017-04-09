@@ -63,16 +63,20 @@ router.post('/enlace', function(req, res, next){
 	try{
 		if(req.body.text !==undefined && req.body.text.length>1){
 			var analisis = robot.analiza(req.body.text);
-	        var pensamiento = robot.piensa(tclient, analisis);
-	        var respuesta = robot.responde(pensamiento, analisis);
-	        res.send(respuesta);
+
+	        robot.piensa(tclient, analisis, function(pensamiento, analisis){
+
+		        var respuesta = robot.responde(pensamiento, analisis);
+
+		        res.send(respuesta);
+		        next();
+		        });
     	}
 	}
 	catch(error){
 		console.log(error.message);
 		res.send('adios hubo un error');
 	}
-next();
 });
 router.post('/tuit', function(req, res, next){
 	try{

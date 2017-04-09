@@ -11,27 +11,41 @@ module.exports={
 
 		return analisis;
 	},
-	piensa:function(twitter, analisis){
-		var piensa = [];
-
+	piensa:function(twitter, analisis, responder){
 		twitter.get('search/tweets', {
-				q: analisis.join(' '), 
-			count: 10, result_type: 'recent', lang: 'es'}, 
-			function(error, tweets, response) {
+				q: '"' + analisis.join(' ') + '" -@ -RT', 
+				count: 10, result_type: 'recent', lang: 'es'
+				}, 
+				function(error, tweets) {
 				if(!error){
-   				piensa = tweets;
+						if(tweets.statuses.length>1)
+   						{
+   							for (var i = 0; i < tweets.statuses.length; i++) {
+   								if(tweets.statuses[i].text.split(' ').length > analisis.length){
+   									responder(tweets.statuses[i].text, analisis);
+   									break;
+   								}
+   							}
+   						}
+   						else{
+   							responder('no encontré qué responder... ', analisis);
+   						}
    				}
 		});
 
-		return piensa[0];
 	},
 	responde:function(pensamiento, analisis){
-		/*
-		var respuesta = pensamiento.filter(function(n) {
-   		 return analisis.indexOf(n) === -1;
-		});
+		console.log(pensamiento);
+		console.log(analisis);
+		analisis = analisis.join(' ');
+		var respuesta = [];
+		var palabras = pensamiento.split(' ');
 
-		return respuesta.join(' ');*/
-		return pensamiento;
+			for(var j = 0; j<palabras.length;j++){
+				if(analisis.toLowerCase().indexOf(palabras[j].toLowerCase()) === -1)
+					respuesta.push(palabras[j]);
+			}
+		
+		return respuesta.join(' ');
 	}
 }
