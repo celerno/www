@@ -42,8 +42,12 @@ module.exports={
 		var palabras = pensamiento.split(' ');
 
 			for(var j = 0; j<palabras.length;j++){
-				if(analisis.toLowerCase().indexOf(palabras[j].toLowerCase()) === -1)
-					respuesta.push(palabras[j]);
+				var arroba = /(@|http)\w+/;
+
+				if(arroba.test(palabras[j]) === false){
+					if(analisis.toLowerCase().indexOf(palabras[j].toLowerCase()) === -1)
+						respuesta.push(palabras[j]);
+				}
 			}
 		
 		return respuesta.join(' ');

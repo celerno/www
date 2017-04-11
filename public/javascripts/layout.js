@@ -18,7 +18,7 @@ function animOut(element) {
                 if(hablapormi.test(window.location)){
                     var respuesta = '';
                     
-                    if(cmdNargs.split(' ').length > 1){
+                    if(cmdNargs.length > 1){
 
                             $.ajax({
                                     method: "POST", async:false, cache:false 
