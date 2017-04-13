@@ -1,6 +1,9 @@
 module.exports={
 	analiza:function(oracion){
-	var separa = oracion.indexOf(' ') === -1? oracion : oracion.split(' ');
+	var separa = oracion.indexOf(' ') === -1? [] : oracion.split(' ');
+	if(separa.length===[])
+		separa[0] = oracion;
+	
 	var analisis = [];
 	var palabra = new RegExp('\\w+');
 
