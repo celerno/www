@@ -40,12 +40,16 @@ module.exports={
 		analisis = analisis.join(' ');
 		var respuesta = [];
 		var palabras = pensamiento.split(' ');
+		var lastW = analisis[analisis.length-1];
+		var go = false;
 
-			for(var j = 0; j<palabras.length;j++){
+			for(var j = 0; j<palabras.length && respuesta.length < 5;j++){
 				var arroba = /(@|http)\w+/;
-
+				if(palabras[j].toLowerCase() === lastW.toLowerCase())
+					go = true;
+				
 				if(arroba.test(palabras[j]) === false){
-					if(analisis.toLowerCase().indexOf(palabras[j].toLowerCase()) === -1)
+					if(analisis.toLowerCase().indexOf(palabras[j].toLowerCase()) === -1 && go)
 						respuesta.push(palabras[j]);
 				}
 			}
