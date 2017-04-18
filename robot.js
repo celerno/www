@@ -1,8 +1,6 @@
 module.exports={
 	analiza:function(oracion){
-	var separa = oracion.indexOf(' ') === -1? [] : oracion.split(' ');
-	if(separa.length===[])
-		separa[0] = oracion;
+	var separa = oracion.indexOf(' ') === -1? [oracion] : oracion.split(' ');
 	
 	var analisis = [];
 	var palabra = new RegExp('\\w+');
@@ -43,7 +41,7 @@ module.exports={
 		var lastW = analisis[analisis.length-1];
 		analisis = analisis.join(' ');
 		var respuesta = [];
-		var palabras = pensamiento.split(' ');
+		var palabras = pensamiento.indexOf(' ') === -1? [pensamiento] : pensamiento.split(' ');
 		
 		var go = false;
 
