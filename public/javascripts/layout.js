@@ -16,6 +16,8 @@ function animOut(element) {
                     window.location = '/';
                 }
                 if(hablapormi.test(window.location)){
+
+                    
                     var respuesta = '';
                     
                     if(cmdNargs.length >= 1){
