@@ -32,7 +32,10 @@ router.get('/ruidos', function(req,res,next){
 	res.render('sonidos', { title: 'chamizo.org - biblioteca pública de ruidos de ciudad...'});
 });
 router.get('/hablapormi', function(req,res,next){
-	res.render('hablapormi', { title: 'chamizo.org - tuitea en nombre de la cuenta @hablapormi...'});
+	res.render('hablapormi', { title: 'chamizo.org - bot para tuiter que todavía no tiene función'});
+});
+router.get('/caracol', function(req,res,next){
+	res.render('caracol', { title: 'chamizo.org - caracol'});
 });
 
 router.post('/cmd',function(req,res,next){
