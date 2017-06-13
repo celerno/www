@@ -2,7 +2,7 @@
 
 Programar significa escribir pasos que una máquina llevará acabo. Se programa el microondas tecleando el tiempo deseado, se programa la alarma del despertador presionando el botón "set alarm" y escribiendo la hora. Programar es simplemente escribir instrucciones. 
 
-Técnicamente, para dominar la programación ("hacer páginas web", juegos, cuestionarios, hasta sistemas contables y todas esas cosas por las que actualmente se reciben buenos sueldos) solo habría qué aprenderse unos cuantos pasos y escribirlos a la computadora pero lamentablemente, siendo las computadoras tan nuevas, todos esos pasos forman una red de complicaciones en la que, con suerte, este texto podría ayudar a destramar. 
+Técnicamente, para dominar la programación ("hacer páginas web", juegos, cuestionarios, hasta sistemas contables y todas esas cosas por las que actualmente se reciben buenos sueldos) solo habría qué aprenderse unos cuantos pasos y escribirlos a la computadora pero lamentablemente, siendo las computadoras tan nuevas, todos esos pasos forman una red de complicaciones que, con suerte, este texto podría ayudar a destramar. 
 
 Lo principal ante cualquier problema es tener un método para entenderlo. Todas las personas tienen los suyos (incluso la falta de método es uno en sí), así que utiliza el método que se te antoje, sólo recomiendo que sea siempre el mismo. Por si te sirve, voy a recomendar la técnica de Feynman para aprender, y consiste en:
 
