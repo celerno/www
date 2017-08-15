@@ -9,7 +9,7 @@ function animOut(element) {
                 
                 if(cmdNargs!=='')
                     $.ajax({method: "POST",url: "/cmd",data: { text: cmdNargs }});
-                
+                let command = (cmdNargs.split(' ')[0]||'').toLowerCase();
                 var hablapormi=/hablapormi/;
                 var adios = /adios/;
                 if(adios.test(cmdNargs)===true){
@@ -41,7 +41,7 @@ function animOut(element) {
                     return;
                 }
 
-                let command = (cmdNargs.split(' ')[0]||'').toLowerCase();
+                
 
                     var proyectos=function(){
                         term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
