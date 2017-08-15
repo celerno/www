@@ -21,8 +21,9 @@ function animOut(element) {
                     var respuesta = '';
                     
                     if(cmdNargs.length >= 1){
+                       $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(command.length, 127)}});
 
-                            $.ajax({
+                         /*   $.ajax({
                                     method: "POST", async:false, cache:false 
                                     ,url: "/enlace",data: { text: cmdNargs }
                                     ,error:function(err){
@@ -32,6 +33,7 @@ function animOut(element) {
                                         term.echo(resp);
                                     }
                                 });
+                                */
 
                             //term.echo(respuesta);
                     }
