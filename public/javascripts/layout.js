@@ -21,7 +21,7 @@ function animOut(element) {
                     var respuesta = '';
                     
                     if(cmdNargs.length >= 1){
-                       $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(command.length, 127)}});
+                       $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(command.length, 140)}});
 
                          /*   $.ajax({
                                     method: "POST", async:false, cache:false 
