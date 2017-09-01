@@ -86,9 +86,9 @@ router.post('/tuit', function(req, res, next){
 	
   	var tuit = req.body.text;
   	console.log('tuit: ' +tuit);
-  	tuit = (tuit.length>127? tuit.substring(0,127): tuit) + ' - #hablapormí';
+  	tuit = tuit.length>127? tuit.substring(0,140): tuit;
 
-  	tclient.post('statuses/update', {status: tuit},  function(error, tweet, response){
+  	tclient.post('statuses/update', {status: '   ' + tuit},  function(error, tweet, response){
 		if(error){
 			    console.log(error);
 			  }
