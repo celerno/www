@@ -44,7 +44,7 @@ function animOut(element) {
                 
 
                     var proyectos=function(){
-                        term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.org]');
+                        term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.pro]');
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('blog       ------    blog personal / y sobre cosmos en español');
                         term.echo('ruido/noise -----    ruidos de ciudad/city noise');
@@ -79,12 +79,12 @@ function animOut(element) {
                     else if(command==='mixe'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location="http://mixe.chamizo.org";
+                        window.location="http://mixe.chamizo.pro";
                     }
                     else if(command==='blog'){
                         term.echo('estás por abandonar esta página...');
                         term.read();
-                        window.location='http://blog.chamizo.org';
+                        window.location='http://blog.chamizo.pro';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
@@ -149,7 +149,7 @@ function animOut(element) {
                 }
 
                 , {
-                    greetings: 'chamizo.org - [toda entrada es &#128190; / inputs here are &#128190;]',
+                    greetings: 'chamizo.pro - [toda entrada es &#128190; / inputs here are &#128190;]',
                     name: 'js_demo',
                     height: 120,
                     prompt: '_> '
