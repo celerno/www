@@ -15,27 +15,27 @@ var tclient = new TwitterPackage(secret);
 var robot = require('../robot.js');
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'chamizo.org' });
+  res.render('index', { title: 'chamizo.pro' });
 });
 
 router.get('/mixe',function(req, res, next){
-	res.render('mixe', {title:'chamizo.org - Proyectos - Blog mixte'});
+	res.render('mixe', {title:'chamizo.pro - Proyectos - Blog mixte'});
 });
 
 router.get('/about', function(req,res,next){
-	res.render('about', { title: 'chamizo.org - acerca de...'});
+	res.render('about', { title: 'chamizo.pro - acerca de...'});
 });
 router.get('/contact',function(req,res,next){
-	res.render('contact',{title:'chamizo.org - contacto'});
+	res.render('contact',{title:'chamizo.pro - contacto'});
 });
 router.get('/ruidos', function(req,res,next){
-	res.render('sonidos', { title: 'chamizo.org - biblioteca pública de ruidos de ciudad...'});
+	res.render('sonidos', { title: 'chamizo.pro - biblioteca pública de ruidos de ciudad...'});
 });
 router.get('/hablapormi', function(req,res,next){
-	res.render('hablapormi', { title: 'chamizo.org - bot para tuiter que todavía no tiene función'});
+	res.render('hablapormi', { title: 'chamizo.pro - bot para tuiter que todavía no tiene función'});
 });
 router.get('/caracol', function(req,res,next){
-	res.render('caracol', { title: 'chamizo.org - caracol'});
+	res.render('caracol', { title: 'chamizo.pro - caracol'});
 });
 
 router.post('/cmd',function(req,res,next){
