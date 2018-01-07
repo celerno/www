@@ -18,7 +18,7 @@ body {
   font-family: "Courier New", Arial, sans-serif;
 }
 .content{
-  position: relative; !important;
+  position: relative !important;
   margin-left: 80px;
   margin-right:80px;
   margin-top: 10%;

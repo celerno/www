@@ -37,6 +37,9 @@ router.get('/hablapormi', function(req,res,next){
 router.get('/caracol', function(req,res,next){
 	res.render('caracol', { title: 'chamizo.pro - caracol'});
 });
+router.get('/marichuy', function(req,res,next){
+	res.render('marichuy', { });
+});
 
 router.post('/cmd',function(req,res,next){
 	//specific time
