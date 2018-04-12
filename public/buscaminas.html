@@ -31,12 +31,48 @@
     <td>Indica que valió verga la pata del mameitor (perdiste el juego)</td>
   </tr>
   <script>
-var piezas = ['1', '1', '💣', '1'];
-$(".tablero > button").on("click", function(e) {
-  var pisada = e.target;
-  var posicion = pisada.id;
-  pisada.innerText = piezas[posicion];
-});
+  $(".tablero > button").on("click", function(e) {
+    var pisada = e.target;
+    var posicion = pisada.id;
+    pisada.innerText = tablero[posicion];
+
+    if (tablero[posicion] === bombaNoBomba[0]) {
+      $('.tablero').html('');
+      var fin = document.createElement('img');
+      fin.src = 'http://www.larubiadelpueblo.com/wp-content/uploads/2018/01/hashtags-se-te-acabo-la-fiesta.gif'
+      $('.tablero').append(fin);
+    }
+  });
+  var tablero = [' ', ' ', ' ', ' '];
+  var bombaNoBomba = ['💣', ' '];
+  var numero_bombas_max = 2;
+  var numeroPiezasTablero = 4;
+
+  function inciar_tablero() {
+    /*repartir bombas*/
+    var n = 0;
+    for (n = 0; n < numero_bombas_max; n++) {
+      var bomba = bombaNoBomba[Math.floor(Math.random() * 2)];
+      var posicion = Math.floor(Math.random() * 4);
+      tablero[posicion] = bomba;
+    }
+
+    //alert(tablero);
+    /*poner pistas*/
+    for (n = 0; n < numeroPiezasTablero; n++) {
+      if (tablero[n] !== ' ') {
+        /*significa que hay bomba*/
+        if (n > 0 && n === (numeroPiezasTablero - 1)) {
+          tablero[n - 1] = '1';
+        } else {
+          tablero[n + 1] = '1';
+        }
+        //alert(tablero);
+      }
+    }
+  }
+  inciar_tablero();
+
 
 </script>
 
