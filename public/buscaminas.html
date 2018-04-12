@@ -1,0 +1,44 @@
+
+<html>
+<head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Buscaminas</h1>
+  <div class="tablero">
+  <button id="0">&nbsp;</button>
+  <button id="1">&nbsp;</button>
+  <button id="2">&nbsp;</button>
+  <button id="3">&nbsp;</button>
+  </div>
+  
+  
+<h2>¿Qué es el buscaminas?</h2>
+  <p>
+  El buscaminas es un juego que consta de un tablero cuadrado, dividido en cuadros iguales. 
+  Estos cuadros son posiciones que ocultan bajo sí, uno de ciertos valores:
+  </p>
+  <table>
+  <tr>
+  <td>1, 2, 3, 4:</td>
+  <td>Un valor numérico N indica que N cuadros contiguos contienn una Bomba</td>
+  </tr>
+  <tr>
+    <td>Bomba</td>
+    <td>Indica que valió verga la pata del mameitor (perdiste el juego)</td>
+  </tr>
+  <script>
+var piezas = ['1', '1', '💣', '1'];
+$(".tablero > button").on("click", function(e) {
+  var pisada = e.target;
+  var posicion = pisada.id;
+  pisada.innerText = piezas[posicion];
+});
+
+</script>
+
+  </body>
+  </html>
