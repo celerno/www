@@ -31,50 +31,89 @@
     <td>Indica que valió verga la pata del mameitor (perdiste el juego)</td>
   </tr>
   <script>
-  $(".tablero > button").on("click", function(e) {
-    var pisada = e.target;
-    var posicion = pisada.id;
-    pisada.innerText = tablero[posicion];
-
-    if (tablero[posicion] === bombaNoBomba[0]) {
-      $('.tablero').html('');
-      var fin = document.createElement('img');
-      fin.src = 'http://www.larubiadelpueblo.com/wp-content/uploads/2018/01/hashtags-se-te-acabo-la-fiesta.gif'
-      $('.tablero').append(fin);
-    }
-  });
-  var tablero = [' ', ' ', ' ', ' '];
+    function rand(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  var tablero = [];
   var bombaNoBomba = ['💣', ' '];
-  var numero_bombas_max = 2;
+  var numero_bombas_max = 4;
   var numeroPiezasTablero = 4;
+  var gameover = 'http://www.larubiadelpueblo.com/wp-content/uploads/2018/01/hashtags-se-te-acabo-la-fiesta.gif';
 
   function inciar_tablero() {
+    var i, j;
+    for (i = 0; i < numeroPiezasTablero; i++) {
+      tablero[i] = [];
+      for (j = 0; j < numeroPiezasTablero; j++) {
+        tablero[i][j] = 0;
+      }
+    }
     /*repartir bombas*/
     var n = 0;
     for (n = 0; n < numero_bombas_max; n++) {
-      var bomba = bombaNoBomba[Math.floor(Math.random() * 2)];
-      var posicion = Math.floor(Math.random() * 4);
-      tablero[posicion] = bomba;
+      var bomba = bombaNoBomba[rand(2)];
+      i = rand(numeroPiezasTablero);
+      j = rand(numeroPiezasTablero);
+      tablero[i][j] = bomba;
     }
 
     //alert(tablero);
     /*poner pistas*/
-    for (n = 0; n < numeroPiezasTablero; n++) {
-      if (tablero[n] !== ' ') {
-        /*significa que hay bomba*/
-        if (n > 0 && n === (numeroPiezasTablero - 1)) {
-          tablero[n - 1] = '1';
-        } else {
-          tablero[n + 1] = '1';
+    for (i = 0; i < numeroPiezasTablero; i++) {
+      for (j = 0; j < numeroPiezasTablero; j++) {
+        if (tablero[i][j] === bombaNoBomba[0]) {
+          /*significa que hay bomba*/
+          if (i > 0 && j > 0) tablero[i - 1][j - 1] += 1;
+          if (i > 0) tablero[i - 1][j] += 1;
+          if (i > 0 && j < numeroPiezasTablero - 1) tablero[i - 1][j + 1] += 1;
+          if (j > 0) tablero[i][j - 1] += 1;
+          if (j < numeroPiezasTablero - 1) tablero[i][j + 1] += 1;
+          if (i < numeroPiezasTablero - 1 && j > 0) tablero[i + 1][j - 1] += 1;
+          if (i < numeroPiezasTablero - 1) tablero[i + 1][j] += 1;
+          if (i < numeroPiezasTablero - 1 && j < numeroPiezasTablero - 1)
+            tablero[i + 1][j + 1] += 1;
+          //alert(tablero);
         }
-        //alert(tablero);
       }
+    }
+    for (i = 0; i < numeroPiezasTablero; i++) {
+      var row = document.createElement('div');
+      for (j = 0; j < numeroPiezasTablero; j++) {
+        if (tablero[i][j] == 0)
+          tablero[i][j] = '🐾';
+        var but = document.createElement('button');
+        but.id = i + '-' + j;
+        but.innerHTML = '☁️';
+        row.appendChild(but);
+      }
+      document.getElementById('tablero').append(row);
     }
   }
   inciar_tablero();
+  $("button").on("click", function(e) {
+    var pisada = e.target;
+    var i = pisada.id.split('-')[0];
+    var j = pisada.id.split('-')[1];
 
+    if (tablero[i][j] === bombaNoBomba[0]) {
+      var fin = document.createElement('img');
+      fin.src = gameover;
+      $('#anuncios').append(fin); { //revelar el resto del tablero
+        var i, j;
+        for (i = 0; i < numeroPiezasTablero; i++)
+          for (j = 0; j < numeroPiezasTablero; j++) {
+            $('#' + i + '-' + j).html(tablero[i][j]);
+          }
+      }
+      $('#tablero').children().prop('disabled', true);
 
-</script>
+    } else {
+      pisada.innerText = tablero[i][j];
+    }
+
+  });
+
+    </script>
 
   </body>
   </html>
