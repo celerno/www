@@ -31,6 +31,7 @@
     <td>Indica que valió verga la pata del mameitor (perdiste el juego)</td>
   </tr>
   <script>
+$(document).ready(funcion(){
     function rand(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -86,7 +87,7 @@
         but.innerHTML = '☁️';
         row.appendChild(but);
       }
-      document.getElementById('tablero').append(row);
+      document.getElementById('tablero').appendChild(row);
     }
   }
   inciar_tablero();
@@ -112,7 +113,7 @@
     }
 
   });
-
+    });
     </script>
 
   </body>
