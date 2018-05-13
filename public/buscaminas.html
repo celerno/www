@@ -6,6 +6,28 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 </head>
+<style>
+  body {
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+#tableroDiv {
+  /*el área donde irá el tablero*/
+  border-style: solid;
+  border-width: 1px;
+  width: 200px;
+  text-align: center;
+  height: 200px;
+}
+
+div>button {
+  width: 22%;
+  height: 22%;
+  /*los botones que irán en cada posición*/
+}
+
+</style>
 <body>
 <h1>Buscaminas</h1>
 <h2>¿Qué es el buscaminas?</h2>
@@ -24,7 +46,7 @@
 </table>
 <br>
 <center>
-  <div id="tablero">
+  <div id="tableroDiv">
   </div>
   <div id="anuncios">
   </div>
@@ -36,11 +58,11 @@ $(document).ready(function(evt){
     return Math.floor(Math.random() * Math.floor(max));
   }
   var tablero = [];
-  var bombaNoBomba = ['💣', ' '];
+  var bombaNoBomba = ['💣', 0];
   var numero_bombas_max = 4;
   var numeroPiezasTablero = 4;
   var gameover = 'http://www.larubiadelpueblo.com/wp-content/uploads/2018/01/hashtags-se-te-acabo-la-fiesta.gif';
-
+  var victoria = 'https://m.popkey.co/9162d3/edqAm.gif';
   function inciar_tablero() {
     var i, j;
     for (i = 0; i < numeroPiezasTablero; i++) {
@@ -50,7 +72,7 @@ $(document).ready(function(evt){
       }
     }
     /*repartir bombas*/
-    var n = 0;
+    var n;
     for (n = 0; n < numero_bombas_max; n++) {
       var bomba = bombaNoBomba[rand(2)];
       i = rand(numeroPiezasTablero);
@@ -64,82 +86,155 @@ $(document).ready(function(evt){
       for (j = 0; j < numeroPiezasTablero; j++) {
         if (tablero[i][j] === bombaNoBomba[0]) {
           /*significa que hay bomba*/
-          if (i > 0 && j > 0) tablero[i - 1][j - 1] += 1;
-          if (i > 0) tablero[i - 1][j] += 1;
-          if (i > 0 && j < numeroPiezasTablero - 1) tablero[i - 1][j + 1] += 1;
-          if (j > 0) tablero[i][j - 1] += 1;
-          if (j < numeroPiezasTablero - 1) tablero[i][j + 1] += 1;
-          if (i < numeroPiezasTablero - 1 && j > 0) tablero[i + 1][j - 1] += 1;
-          if (i < numeroPiezasTablero - 1) tablero[i + 1][j] += 1;
-          if (i < numeroPiezasTablero - 1 && j < numeroPiezasTablero - 1)
-            tablero[i + 1][j + 1] += 1;
-          //alert(tablero);
+          checarAlrededor(i, j, incrementar);
         }
       }
     }
     for (i = 0; i < numeroPiezasTablero; i++) {
       var row = document.createElement('div');
       for (j = 0; j < numeroPiezasTablero; j++) {
-        if (tablero[i][j] == 0)
-          tablero[i][j] = '🐾';
         var but = document.createElement('button');
         but.id = i + '-' + j;
         but.innerHTML = '☁️';
         row.appendChild(but);
       }
-      document.getElementById('tablero').appendChild(row);
+      document.getElementById('tableroDiv').appendChild(row);
     }
   }
   inciar_tablero();
 
+  function incrementar(i, j) {
+    if (isNaN(tablero[i][j]))
+      return;
+    tablero[i][j] = parseInt(tablero[i][j]) + 1;
+  }
+
   function icono(val) {
     val = isNaN(val) ? val : parseInt(val);
     switch (val) {
+      case 0:
+        val = '🐾';
+        break;
       case 1:
-        val = '1️⃣';break;
+        val = '1️⃣';
+        break;
       case 2:
-        val = '2️⃣';break;
+        val = '2️⃣';
+        break;
       case 3:
-        val = '3️⃣';break;
+        val = '3️⃣';
+        break;
       case 4:
-        val = '4️⃣';break;
+        val = '4️⃣';
+        break;
       case 5:
-        val = '5️⃣';break;
+        val = '5️⃣';
+        break;
       case 6:
-        val = '6️⃣';break;
+        val = '6️⃣';
+        break;
       case 7:
-        val = '7️⃣';break;
+        val = '7️⃣';
+        break;
       case 8:
-        val = '8️⃣';break;
+        val = '8️⃣';
+        break;
       case 9:
-        val = '9️⃣';break;
+        val = '9️⃣';
+        break;
       case 10:
-        val = '🔟';break;
+        val = '🔟';
+        break;
     }
     return val;
-    
+
+  }
+
+  function pisar(i, j, pisada) {
+    i = parseInt(i);
+    j = parseInt(j);
+    if (tablero[i][j] === bombaNoBomba[0]) { //fin de juego
+      var fin = document.createElement('img');
+      fin.src = gameover;
+      $('#anuncios').append(fin); 
+      { //revelar el resto del tablero
+        for (i = 0; i < numeroPiezasTablero; i++)
+          for (j = 0; j < numeroPiezasTablero; j++) {
+            document.getElementById(i + '-' + j)
+            .innerHTML = tablero[i][j] = icono(tablero[i][j]);
+          }
+      }
+      $('button').prop('disabled', true);
+
+    } else {
+      pisada.innerText =  icono(tablero[i][j]);
+      if (tablero[i][j] == 0) {
+        checarAlrededor(i, j, pisarCeros);
+      }
+      tablero[i][j] = icono(tablero[i][j]);
+      var quedanNumeros=false;
+      var ii,jj;
+      for (ii = 0; ii < numeroPiezasTablero; ii++){
+          for (jj = 0; jj < numeroPiezasTablero; jj++) {
+            if(!(ii===i && j===jj)){
+              quedanNumeros = ! isNaN(tablero[ii][jj]);
+            if(quedanNumeros)
+              break;
+            }
+          }
+        if(quedanNumeros)
+            break;
+      }
+      if(quedanNumeros==false){
+        //victoria
+       var fin = document.createElement('img');
+      fin.src = victoria;
+      $('#anuncios').append(fin); 
+      }
+    }
+  }
+
+  function pisarCeros(i, j) {
+    i = parseInt(i);
+    j = parseInt(j);
+    if (i < numeroPiezasTablero &&
+      j < numeroPiezasTablero &&
+      tablero[i][j] == 0) {
+      var pisada = document.getElementById(i + '-' + j);
+      pisada.innerText = tablero[i][j]= icono(tablero[i][j]);
+      checarAlrededor(i,j,pisarCeros);
+    }
+  }
+
+  function checarAlrededor(i, j, hacer) {
+    i = parseInt(i);
+    j = parseInt(j);
+    if (i < numeroPiezasTablero &&
+      j < numeroPiezasTablero) {
+      if (i > 0 && j > 0)
+        hacer(i - 1, j - 1);
+      if (i > 0)
+        hacer(i - 1, j);
+      if (i > 0 && j < numeroPiezasTablero - 1)
+        hacer(i - 1, j + 1);
+      if (j > 0)
+        hacer(i, j - 1);
+      if (j < numeroPiezasTablero - 1)
+        hacer(i, j + 1);
+      if (i < numeroPiezasTablero - 1 && j > 0)
+        hacer(i + 1, j - 1);
+      if (i < numeroPiezasTablero - 1)
+        hacer(i + 1, j);
+      if (i < numeroPiezasTablero - 1 && 
+      		j < numeroPiezasTablero - 1)
+        hacer(i + 1, j + 1);
+    }
   }
   $("button").on("click", function(e) {
     var pisada = e.target;
     var i = pisada.id.split('-')[0];
     var j = pisada.id.split('-')[1];
-
-    if (tablero[i][j] === bombaNoBomba[0]) {
-      var fin = document.createElement('img');
-      fin.src = gameover;
-      $('#anuncios').append(fin); { //revelar el resto del tablero
-        var i, j;
-        for (i = 0; i < numeroPiezasTablero; i++)
-          for (j = 0; j < numeroPiezasTablero; j++) {
-            $('#' + i + '-' + j).html(icono(tablero[i][j]));
-          }
-      }
-      $('#tablero').children().prop('disabled', true);
-
-    } else {
-      pisada.innerText = icono(tablero[i][j]);
-    }
-
+    pisar(i, j, pisada);
   });
 
     });
