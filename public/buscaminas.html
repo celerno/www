@@ -32,7 +32,7 @@
 
   <script>
 $(document).ready(function(evt){
-    function rand(max) {
+  function rand(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
   var tablero = [];
@@ -91,6 +91,34 @@ $(document).ready(function(evt){
     }
   }
   inciar_tablero();
+
+  function icono(val) {
+    val = isNaN(val) ? val : parseInt(val);
+    switch (val) {
+      case 1:
+        val = '1️⃣';break;
+      case 2:
+        val = '2️⃣';break;
+      case 3:
+        val = '3️⃣';break;
+      case 4:
+        val = '4️⃣';break;
+      case 5:
+        val = '5️⃣';break;
+      case 6:
+        val = '6️⃣';break;
+      case 7:
+        val = '7️⃣';break;
+      case 8:
+        val = '8️⃣';break;
+      case 9:
+        val = '9️⃣';break;
+      case 10:
+        val = '🔟';break;
+    }
+    return val;
+    
+  }
   $("button").on("click", function(e) {
     var pisada = e.target;
     var i = pisada.id.split('-')[0];
@@ -103,16 +131,17 @@ $(document).ready(function(evt){
         var i, j;
         for (i = 0; i < numeroPiezasTablero; i++)
           for (j = 0; j < numeroPiezasTablero; j++) {
-            $('#' + i + '-' + j).html(tablero[i][j]);
+            $('#' + i + '-' + j).html(icono(tablero[i][j]));
           }
       }
       $('#tablero').children().prop('disabled', true);
 
     } else {
-      pisada.innerText = tablero[i][j];
+      pisada.innerText = icono(tablero[i][j]);
     }
 
   });
+
     });
     </script>
 
