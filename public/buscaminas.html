@@ -8,30 +8,30 @@
 </head>
 <body>
 <h1>Buscaminas</h1>
-  <div class="tablero">
-  <button id="0">&nbsp;</button>
-  <button id="1">&nbsp;</button>
-  <button id="2">&nbsp;</button>
-  <button id="3">&nbsp;</button>
-  </div>
-  
-  
 <h2>¿Qué es el buscaminas?</h2>
-  <p>
-  El buscaminas es un juego que consta de un tablero cuadrado, dividido en cuadros iguales. 
-  Estos cuadros son posiciones que ocultan bajo sí, uno de ciertos valores:
-  </p>
-  <table>
+<p>
+  El buscaminas es un juego que consta de un tablero cuadrado, dividido en cuadros iguales. Estos cuadros son posiciones que ocultan bajo sí, uno de ciertos valores:
+</p>
+<table>
   <tr>
-  <td>1, 2, 3, 4:</td>
-  <td>Un valor numérico N indica que N cuadros contiguos contienn una Bomba</td>
+    <td>1, 2, 3, 4:</td>
+    <td>Un valor numérico N indica que N cuadros contiguos contienn una Bomba</td>
   </tr>
   <tr>
     <td>Bomba</td>
     <td>Indica que valió verga la pata del mameitor (perdiste el juego)</td>
   </tr>
+</table>
+<br>
+<center>
+  <div id="tablero">
+  </div>
+  <div id="anuncios">
+  </div>
+</center>
+
   <script>
-$(document).ready(funcion(){
+$(document).ready(function(evt){
     function rand(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
