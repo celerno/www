@@ -1,0 +1,66 @@
+<html>
+
+<head>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-git.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/datejs/date.js"></script>
+
+
+
+    <style type="text/css">
+        #month>.col {}
+
+        #month>.row {}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#days').blur(function () {
+                var dateText = $('#date').val();
+                var date = Date.parse(dateText);
+                var days = parseInt($('#days').val());
+                drawCal(days, date);
+            });
+
+            function drawCal(days, date) {
+                var i = 1;
+                var week = $('<div class="row"></div>');
+                for (i = 1; i < days; i+=7) {
+                    var d =0;
+                    for(;d<7;d++){
+                    $(week).append('<div class="col-sm-1">' + (i+d) + '</div>');
+                    }
+                    if (i > 28) {
+                        i = 1;
+                        days -= 28;
+                        //reset add new month
+                    }
+                    $('#calendar').append(week);
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <label for='date'> Start Date:
+            <input id='date' type='text' placeholder='mm/dd/yyyy' value='01/01/2018' /> </label>
+        <label for='days'>Number of days:
+            <input id='days' type='text' />
+        </label>
+        <div id='calendar'>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
