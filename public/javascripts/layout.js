@@ -3,6 +3,10 @@ function animOut(element) {
                .animate({opacity:0.01},3000)
                .animate({opacity:1},3000); 
          }
+	setInterval(function(){
+		var selector = Math.floor(Math.random() * 99) % 2 == 0 ? '.en':'.sp';
+		animOut($(selector));
+	}, 5000);
          jQuery(function($, undefined) {
             var lastMenu = '';
                 var terminal = $('#term_demo').terminal(function(cmdNargs, term) {
