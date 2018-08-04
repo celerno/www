@@ -17,6 +17,13 @@ var cmdSch = new Schema({
     date: { type: String },
     sauce:{ type: String }
 });
-
+var blogSch = new Schema({
+    id: ObjectId,
+    text: {type:String},
+    title:{type:String},
+    date:{type:String},
+    sauce:{ type: String }
+});
 var cmd = db.model('cmd', cmdSch);
+var blog = db.model('blog', blogSch);
 

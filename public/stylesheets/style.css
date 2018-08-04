@@ -53,3 +53,14 @@ span.en{
    float: left;
    margin:10px 10px 0 0;
 }
+.post{
+  cursor: move;
+  z-index: 100;  
+  float: left;
+  position: absolute;
+}
+.post:hover{
+  z-index: 999;
+  color:white;
+  background-color: rgba(20, 20, 100, 150);
+}
