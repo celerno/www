@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('www:server');
 var http = require('http');
 var https = require('https'), fs = require('fs');
+//app.use(security);
 /*
  * Get port from environment and store in Express.
  */
@@ -18,19 +19,20 @@ const options = {
 	key:  fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/privkey.pem'), 
 	cert: fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/fullchain.pem')
 };
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
 /*
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
 https.createServer(options, app).listen(443);
 /*
  * Normalize a port into a number, string, or false.

@@ -9,14 +9,17 @@ var db     = require('./db');
 var post_model = mongoose.model('cmd');
 var routes = require('./routes/index');
 var app = express();
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(function (req, res, next) {
+	if(!req.secure){
+		res.redirect(301,'https://' + req.headers.host + req.url);
+	}
+	next();
+}); 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
