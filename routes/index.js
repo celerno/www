@@ -60,6 +60,20 @@ router.post('/blog',function(req,res,next){
 		sauce: req.get('User-Agent')
 	  });
 	  newPost.save();
+	  //tuit into hablapormi
+		var tuit = req.body.text;
+		//console.log('tuit: ' +tuit);
+		tuit = tuit.length>256 ? tuit.substring(0,256): tuit;
+		tuit = tuit +'... chamizo.pro/blog';
+		tclient.post('statuses/update', {status: tuit},  function(error, tweet, response){
+			if(error){
+					console.log(error);
+				}
+				else{
+					//console.log(tweet);  // Tweet body.
+					//console.log(response);  // Raw response object.
+				}
+			});
 
 	//console.log(newCmd);
 	next();
