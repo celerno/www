@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var db 		 = require('../db');
 var cmd = mongoose.model('cmd');
+var blog = mongoose.model('blog');
 var date 	 = new Date();
 var TwitterPackage = require('twitter');
 var secret = {
@@ -40,24 +41,45 @@ router.get('/caracol', function(req,res,next){
 router.get('/marichuy', function(req,res,next){
 	res.render('marichuy', { });
 });
+router.get('/blog', function(req,res,next){
+	blog.find({title: { $gt: 0 }}, function(err, posts){
+		res.render('blog', {posts:posts});
+	});
+});
 
+router.post('/blog',function(req,res,next){
+	  //Submitting to database
+	  var newPost = blog({
+	  	text: req.body.text,
+		title: req.body.text.substring(0,12) + '...',
+	    date: getTime(),
+		sauce: req.get('User-Agent')
+	  });
+	  newPost.save();
+
+	//console.log(newCmd);
+	next();
+});
+function getTime(){
+	date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var seconds = date.getSeconds();
+	//date
+	var month = date.getMonth() + 1;
+	var year = date.getFullYear();
+	var day = date.getDate();
+	return  year + '-' + n2(month) + '-' + n2(day) + '-' + n2(hours) + ':' + n2(minutes) + ':' + n2(seconds);
+}
+function n2(n){
+	return n>9?n:'0'+n;
+}
 router.post('/cmd',function(req,res,next){
-	//specific time
-	  var hours = date.getHours();
-	  var minutes = date.getMinutes();
-	  var seconds = date.getSeconds();
-	  //date
-	  var month = date.getMonth() + 1;
-	  var year = date.getFullYear();
-	  var day = date.getDate();
-	  var time = month + '/' + day + '/' + year + ' at ' + hours + ':' + minutes + ':' + seconds;
-
-
 	  //Submitting to database
 	  var newCmd = cmd({
 	  	text: req.body.text,
 	    sauce: req.get('User-Agent'),
-	    date: time
+	    date: getTime()
 	  });
 	  newCmd.save();
 

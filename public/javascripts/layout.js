@@ -12,6 +12,17 @@ function animOut(element) {
                 let command = (cmdNargs.split(' ')[0]||'').toLowerCase();
                 var hablapormi=/hablapormi/;
                 var adios = /adios/;
+                var post = /post/;
+                if(post.test(command)){
+                    $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs.substring(4) }});
+                    window.location="/blog";
+                }
+                if(/blog/.test(window.location)){
+                    if(cmdNargs.length>0) $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs }});
+                    cmdNargs = '';
+                    return;
+                }
+                
                 if(adios.test(cmdNargs)===true){
                     window.location = '/';
                 }
@@ -21,7 +32,7 @@ function animOut(element) {
                     var respuesta = '';
                     
                     if(cmdNargs.length >= 1){
-                       $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(command.length, 140)}});
+                       $.ajax({method: "POST", url: "/tuit", data:{text: cmdNargs.substring(4)}});
 
                          /*   $.ajax({
                                     method: "POST", async:false, cache:false 
