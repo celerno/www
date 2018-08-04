@@ -58,9 +58,15 @@ span.en{
   z-index: 100;  
   float: left;
   position: absolute;
+  max-width: 40em;
+}
+.post > div{
+  position: relative;
+  max-width: 40em;
 }
 .post:hover{
   z-index: 999;
   color:white;
   background-color: rgba(20, 20, 100, 150);
+  max-width: 40em;
 }

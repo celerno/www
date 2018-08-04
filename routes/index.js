@@ -46,7 +46,11 @@ router.get('/blog', function(req,res,next){
 		res.render('blog', {posts:posts});
 	});
 });
-
+router.get('/blog/posts', function(req,res,next){
+	blog.find({title: { $gt: 0 }}, function(err, posts){
+		res.render('posts', {posts:posts});
+	});
+});
 router.post('/blog',function(req,res,next){
 	  //Submitting to database
 	  var newPost = blog({

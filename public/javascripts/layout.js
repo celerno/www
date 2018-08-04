@@ -19,6 +19,7 @@ function animOut(element) {
                 }
                 if(/blog/.test(window.location)){
                     if(cmdNargs.length>0) $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs }});
+                    meteOtro(cmdNargs);//in randomize.js. debería estar cargado a este momento
                     cmdNargs = '';
                     return;
                 }
@@ -93,9 +94,7 @@ function animOut(element) {
                         window.location="http://mixe.chamizo.pro";
                     }
                     else if(command==='blog'){
-                        term.echo('estás por abandonar esta página...');
-                        term.read();
-                        window.location='http://blog.chamizo.pro';
+                        window.location='/blog';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');
