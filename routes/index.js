@@ -78,6 +78,7 @@ router.post('/blog',function(req,res,next){
 	//console.log(newCmd);
 	next();
 });
+
 function getTime(){
 	date = new Date();
 	var hours = date.getHours();
@@ -147,5 +148,8 @@ router.post('/tuit', function(req, res, next){
   next();
 });
 
+router.get('/opendata', function(req, res, next){
+	res.render('opendata', { title: 'tallermínimo de datos abiertos para periodismo.' });
+});
 
 module.exports = router;
