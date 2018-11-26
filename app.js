@@ -11,10 +11,8 @@ var post_model = mongoose.model('cmd');
 var routes = require('./routes/index');
 var vhost = require('vhost');
 var app = express();
-var middle = connect();
-var serveStatic = require('serve-static');
-//use vhosts
-// view engine setup
+var fileUpload = require('express-fileupload');
+
 
 
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
@@ -54,8 +52,8 @@ app.use(vhost('chamizo.pro', function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-}));
-
+});
+app.use(fileUpload());
 // error handlers
 
 // development error handler

@@ -4,11 +4,23 @@ block content
 
     div(class='content')
         h1 ¿cómo suena tu ciudad?
-        button(id='cargar') así...
-        script.
-            $('#cargar').click(function(e){
-                e.preventDefault();
-                alert('aquí se podrán cargar nuevos sonidos -de algún modo-');
-            });
-
+        form(action='/upload', method="post", encType="multipart/form-data")
+            label nombre de tu sonido:
+            input(type="text", name="nombre") 
+            br
+            input(type="file", name="sonido")
+            br
+            label escribe algo sobre tu sonido.
+            i 
+                label(style="font-size:smaller") (cuándo lo escuchas. qué te recuerda. es nuevo o viejo. le gusta o no a la gente. es característico. etcétera)
+            br
+            textarea(type="text", cols="60", rows="6", name="descripcion")
+            br
+            label tags. origen. ciudad. país. colonia. 
+            i 
+                label(style="font-size:smaller") (separado por comas, de preferencia)
+            br
+            input(type="text")
+            input(id='cargar', type="submit", value="cargar") 
+        
 
