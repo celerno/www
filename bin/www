@@ -14,10 +14,7 @@ var https = require('https'), fs = require('fs');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-const options = {
-	key:  fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/privkey.pem'), 
-	cert: fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/fullchain.pem')
-};
+
 /*
  * Create HTTP server.
  */
@@ -31,7 +28,15 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-https.createServer(options, app).listen(443);
+
+if(port == '80'){
+  const options = {
+    key:  fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/privkey.pem'), 
+    cert: fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/fullchain.pem')
+  };
+  https.createServer(options, app).listen(443);
+}
+
 /*
  * Normalize a port into a number, string, or false.
  */

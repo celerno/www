@@ -9,6 +9,8 @@ var db     = require('./db');
 var post_model = mongoose.model('cmd');
 var routes = require('./routes/index');
 var app = express();
+var fileUpload = require('express-fileupload');
+
 
 
 // view engine setup
@@ -32,7 +34,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
+app.use(fileUpload());
 // error handlers
 
 // development error handler
