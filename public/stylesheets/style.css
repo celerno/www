@@ -59,6 +59,8 @@ span.en{
   float: left;
   position: absolute;
   max-width: 40em;
+  color:darkcyan;
+  background-color:rgba(190,190,190,.1);
 }
 .post > div{
   position: relative;

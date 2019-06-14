@@ -26,6 +26,9 @@ router.get('/mixe',function(req, res, next){
 router.get('/about', function(req,res,next){
 	res.render('about', { title: 'chamizo.pro - acerca de...'});
 });
+router.get('/cielo', function(req,res,next){
+	res.render('elcieloeselpasado', { title: 'chamizo.pro - el cielo es el pasado'});
+});
 router.get('/contact',function(req,res,next){
 	res.render('contact',{title:'chamizo.pro - contacto'});
 });

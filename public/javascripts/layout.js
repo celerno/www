@@ -17,7 +17,10 @@ function animOut(element) {
                 var hablapormi=/hablapormi/;
                 var adios = /adios/;
                 var post = /post/;
-                if(post.test(command)){
+                if(/itza/.test(command)){
+		$('img').attr('src','/pyito.jpg');
+		}
+		if(post.test(command)){
                     $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs.substring(4) }});
                     window.location="/blog";
                 }
