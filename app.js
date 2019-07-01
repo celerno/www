@@ -14,13 +14,14 @@ var app = express();
 var middle = connect();
 var serveStatic = require('serve-static');
 //use vhosts
-app.use(vhost('test.coolbox.com.mx', serveStatic('../coolbox.com.mx-Test/')));
-app.use(vhost('coolbox.com.mx', serveStatic('../coolbox.com.mx/')));
 // view engine setup
+app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
+app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 // uncomment after placing your favicon in /public
+middle.use(vhost('coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
+middle.use(vhost('*.coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 middle.use(vhost('*.chamizo.pro', function (req, res, next) {
 	if(!req.secure){
