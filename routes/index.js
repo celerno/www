@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var db 		 = require('../db');
 var cmd = mongoose.model('cmd');
+var diario = mongoose.model('diario');
 var blog = mongoose.model('blog');
 var date 	 = new Date();
 var TwitterPackage = require('twitter');
@@ -107,6 +108,33 @@ router.post('/cmd',function(req,res,next){
 
 	//console.log(newCmd);
 	next();
+});
+router.post('/diario',function(req,res,next){
+	//Submitting to database
+	var diario = diario({
+	  name: req.body.diario.name,
+	  password:req.body.diario.password,
+	  fecha: req.body.diario.fecha,
+	  sauce: req.get('User-Agent'),
+	  date: getTime()
+	});
+	diario.save();
+  //console.log(newCmd);
+  next();
+});
+router.post('/diarioEntry',function(req,res,next){
+	//Submitting to database
+	var diario = diarioEntry({
+	  name: req.body.diario.name,
+	  password:req.body.diario.password,
+	  fecha: req.body.diario.fecha,
+	  
+	  sauce: req.get('User-Agent'),
+	  date: getTime()
+	});
+	diario.save();
+  //console.log(newCmd);
+  next();
 });
 router.post('/enlace', function(req, res, next){
 	
