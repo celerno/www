@@ -12,8 +12,11 @@
     "express": "^4.17.1",
     "jquery.terminal": "^2.6.3",
     "mongodb": "2.x.x",
+    "jquery": ">=3.4.0",
     "mongoose": "^5.6.7",
     "morgan": "^1.9.1",
+    "lodash": ">=4.17.13",
+    "mpath": ">=0.5.1",
     "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
     "twitter": "^1.7.1"
