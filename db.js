@@ -24,6 +24,27 @@ var blogSch = new Schema({
     date:{type:String},
     sauce:{ type: String }
 });
+var diarioSch = new Schema({
+    id: ObjectId,
+    name: {type:String},
+    password:{type:String},
+    tareas:[{
+        id:ObjectId,
+        name: {type:String}, // "aprender algo" / hacer ejercicio por la mañana / hacer desayuno / lavarme los dientes / cargar las tareas del día /
+        tipo:{type:String}, //alimentación, salud, ocio, sexo, ejercicio, proyectos, trabajo, dinero
+        frecuencia:{type:String}, //L,M,M,J,V,S,D (todos, sería diario, uno o más, sería sólo esos días cada semana,)
+                                  //(M,2,16) (M,L)           (sería mensual, los días 2 y 16 o Mensual, el primer lunes)
+        momento: {type: String}, //mañana, tarde, noche
+    }],
+    dias: [{
+        dia: {type:date},
+        tarea:{type:ObjectId, ref:'Tarea'},
+        status: {type:Boolean}, //Hecho, no hecho
+        comentarios: {type:String}, // obligatorio cuando status sea 0, se leerá en html, talvez markup.
+        }]
+});
+
 var cmd = db.model('cmd', cmdSch);
 var blog = db.model('blog', blogSch);
+var diario = db.model('diario', diarioSch);
 

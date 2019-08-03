@@ -3,7 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var db 		 = require('../db');
 var cmd = mongoose.model('cmd');
-var diario = mongoose.model('diario');
 var blog = mongoose.model('blog');
 var date 	 = new Date();
 var TwitterPackage = require('twitter');
