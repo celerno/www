@@ -15,6 +15,9 @@ var middle = connect();
 var serveStatic = require('serve-static');
 //use vhosts
 // view engine setup
+
+
+app.use('/', routes);
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.set('views', path.join(__dirname, 'views'));
@@ -41,7 +44,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 
 
 // catch 404 and forward to error handler

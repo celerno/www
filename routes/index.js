@@ -154,5 +154,52 @@ router.post('/tuit', function(req, res, next){
 router.get('/opendata', function(req, res, next){
 	res.render('opendata', { title: 'tallermínimo de datos abiertos para periodismo.' });
 });
+var mailer = require('nodemailer');
+router.post('/mailTo', function(req, res, next){
+	try{
+		 if (req.readable) {
+            // REST post.
+            var content = '';
+            req.on('data', function (data) {
+                if (content.length > 1e6) {
+                    // Flood attack or faulty client, nuke request.
+                    res.json({ error: 'Request entity too large.' }, 413);
+                }
+                // Append data.
+                content += data;
+            });
+            req.on('end', function () {
+                // Return the posted data.
+              
+
+		var transporter = mailer.createTransport({
+			service: 'gmail',
+			auth: {
+			  user: process.env.MAILSETTING0,
+			  pass: process.env.MAILSETTING1
+			}
+		  });
+
+		  var mailOptions = {
+			from: process.env.MAILSETTING0,
+			to: 'celerno@gmail.com',			//franquicias@albedo.mx
+			subject: 'Mensaje desde Albedo.mx: ',
+			html: content,
+		  };
+
+		  transporter.sendMail(mailOptions, function(error, info){
+			if (error) {
+			  console.log(error);
+			} else {
+			  console.log('Email sent: ' + info.response);
+			}
+		  });
+	    });
+	}
+	}catch(error){
+		  console.log(error.message);
+	}
+	next();
+});
 
 module.exports = router;
