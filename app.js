@@ -1,5 +1,4 @@
 var express = require('express');
-var connect = require('connect');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -14,7 +13,8 @@ var app = express();
 var fileUpload = require('express-fileupload');
 var proxy = require('http-proxy-middleware');
 
-
+var serveStatic = require('serve-static');
+//use vhosts
 
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
@@ -38,16 +38,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', routes);
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
-middle.use(vhost('coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
+app.use(vhost('coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-middle.use(vhost('chamizo.pro', function (req, res, next) {
+app.use(vhost('chamizo.pro', function (req, res, next) {
 	if(!req.secure){
 		res.redirect(301,'https://' + req.headers.host + req.url);
 	}
 	next();
 })); 
-middle.use(vhost('*.chamizo.pro', function (req, res, next) {
+app.use(vhost('*.chamizo.pro', function (req, res, next) {
 	if(!req.secure){
 		res.redirect(301,'https://' + req.headers.host + req.url);
 	}
@@ -68,7 +68,7 @@ app.use(vhost('chamizo.pro', function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});
+}));
 app.use(fileUpload());
 // error handlers
 
