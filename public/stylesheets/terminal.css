@@ -1,7 +1,16 @@
 .terminal-output{
 	text-align:left;
 	/*color:#88B04B;*/
+	color: black;
 }
 #term_demo{
 	
+	background-color:white;
+}
+.cmd {
+	color:black;
+	background-color:white !important;
+}
+.cmd span.cursor{
+
 }

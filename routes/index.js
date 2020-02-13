@@ -175,14 +175,14 @@ router.post('/mailTo', function(req, res, next){
 		var transporter = mailer.createTransport({
 			service: 'gmail',
 			auth: {
-			  user: process.env.MAILSETTING0,
-			  pass: process.env.MAILSETTING1
+			  user: 'albedo.contact.web@gmail.com',
+			  pass: 'albedo1234'
 			}
 		  });
 
 		  var mailOptions = {
-			from: process.env.MAILSETTING0,
-			to: 'celerno@gmail.com',			//franquicias@albedo.mx
+			from: 'albedo.contact.web@gmail.com',
+			to: 'franquicias@albedo.mx',			//franquicias@albedo.mx
 			subject: 'Mensaje desde Albedo.mx: ',
 			html: content,
 		  };

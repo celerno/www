@@ -17,10 +17,13 @@ var serveStatic = require('serve-static');
 // view engine setup
 
 
-app.use('/', routes);
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
+
+app.use(vhost('albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
+app.use(vhost('*.albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
 app.set('views', path.join(__dirname, 'views'));
+app.use('/', routes);
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 middle.use(vhost('coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
