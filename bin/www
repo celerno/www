@@ -7,36 +7,41 @@
 var app = require('../app');
 var debug = require('debug')('www:server');
 var http = require('http');
-var https = require('https'), fs = require('fs');
-var tls = require('tls'); 
-
-//app.use(security);
-/*
- * Get port from environment and store in Express.
- */
-
 var port = normalizePort(process.env.PORT || '3000');
+
 app.set('port', port);
-function getSecureContext (domain) {
-    return tls.createSecureContext({
-        key:  fs.readFileSync('/etc/letsencrypt/live/'+ domain +'/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/'+ domain + '/fullchain.pem')});
-}
-var secureContext = {
-    'coolbox.com.mx': getSecureContext('coolbox.com.mx'),
-    'chamizo.pro': getSecureContext('chamizo.pro')
-}
-//provide a SNICallback when you create the options for the https server
-var options = {
-    SNICallback: function (domain, cb) {
-	    if(cb){
-		    cb(null, secureContext[domain]);
-	    }else{
-        return secureContext[domain];
-	    }
-    }, //SNICallback is passed the domain name, see NodeJS docs on TLS
-	key:  fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/privkey.pem'), 
-	cert: fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/fullchain.pem')
+
+if(port === 80){
+    var https = require('https'), fs = require('fs');
+    var tls = require('tls'); 
+
+    //app.use(security);
+    /*
+    * Get port from environment and store in Express.
+    */
+
+    function getSecureContext (domain) {
+        return tls.createSecureContext({
+            key:  fs.readFileSync('/etc/letsencrypt/live/'+ domain +'/privkey.pem'),
+            cert: fs.readFileSync('/etc/letsencrypt/live/'+ domain + '/fullchain.pem')});
+    }
+    var secureContext = {
+        'coolbox.com.mx': getSecureContext('coolbox.com.mx'),
+        'chamizo.pro': getSecureContext('chamizo.pro')
+    }
+    //provide a SNICallback when you create the options for the https server
+    var options = {
+        SNICallback: function (domain, cb) {
+          if(cb){
+            cb(null, secureContext[domain]);
+          }else{
+            return secureContext[domain];
+          }
+        }, //SNICallback is passed the domain name, see NodeJS docs on TLS
+      key:  fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/privkey.pem'), 
+      cert: fs.readFileSync('/etc/letsencrypt/live/chamizo.pro/fullchain.pem')
+    }
+    https.createServer(options, app).listen(443);
 }
 /**
  * Listen on provided port, on all network interfaces.
@@ -52,7 +57,6 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-https.createServer(options, app).listen(443);
 /*
  * Normalize a port into a number, string, or false.
  */
