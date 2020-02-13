@@ -3,20 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/start.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "^4.1.0",
+    "es6": "0.0.7",
     "express": "^4.16.4",
-    "express-fileupload": "^1.0.0",
+    "express-fileupload": "^1.1.6",
+    "http-proxy-middleware": "^0.20.0",
     "jquery.terminal": "^2.0.1",
-    "mongodb": "^2.2.36",
-    "mongoose": "4.x.x",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.8.12",
     "morgan": "^1.9.1",
     "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
     "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3"
   }
 }

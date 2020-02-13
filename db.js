@@ -1,29 +1,29 @@
 //PREREQUISITES
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
-    ,ObjectId = Schema.ObjectId;
+import  mongoose from 'mongoose';
+const {Model, Schema} = mongoose;
 
-
-//process.env.MONGOHQ_URL is for deploying on heroku
-//node2blog can be changed to whatever you want your local database to be called i.e. 'my database'
+var ObjectId = mongoose.Schema.ObjectId;
 var db_url = process.env.MONGODB_URI || "mongodb://localhost:27017/www"; 
-var db = mongoose.connect(db_url);
+var db = mongoose.connect(db_url, {useNewUrlParser:true, useUnifiedTopology:true});
 
 //The MongoDB Schema for your posts
 
-var cmdSch = new Schema({
+const cmdSch = new Schema({
     id: ObjectId,
     text: { type: String },
     date: { type: String },
     sauce:{ type: String }
 });
-var blogSch = new Schema({
+const blogSch = new Schema({
     id: ObjectId,
     text: {type:String},
     title:{type:String},
     date:{type:String},
     sauce:{ type: String }
 });
-var cmd = db.model('cmd', cmdSch);
-var blog = db.model('blog', blogSch);
+class cmd extends Model{}
+class blog extends Model{}
+
+module.exports = mongoose.model(cmd, cmdSch, 'cmd')
+module.exports = mongoose.model(blog, blogSch, 'blog');
 

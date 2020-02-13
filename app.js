@@ -12,6 +12,7 @@ var routes = require('./routes/index');
 var vhost = require('vhost');
 var app = express();
 var fileUpload = require('express-fileupload');
+var proxy = require('http-proxy-middleware');
 
 
 
@@ -20,6 +21,19 @@ app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 
 app.use(vhost('albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
 app.use(vhost('*.albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
+var pOptions = {
+  target: 'http://localhost:4000', 
+  changeOrigin:true, 
+  logLevel:'debug', 
+  prependPath: false,
+//  pathRewrite:{'^/jrnl':'/'},
+//router:{'localhost:3000':'localhost:4000'}
+};
+
+const blog = proxy(pOptions);
+app.use('/jrnl', blog);
+
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.use('/', routes);
 app.set('view engine', 'pug');
@@ -44,6 +58,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 
 
