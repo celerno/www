@@ -1,38 +1,36 @@
 nav:
-  home: Inicio
-  about: Acerca de
-  articles: Articulos
-  projects: Proyectos
-  search: Buscar
+  home: ...
+  about: acerca...
+  articles: posts
+  search: buscar
 
 footer:
   copyright: Copyright
 
 index:
-  find_me_on: Encuentrame en
+  find_me_on: estoy en
   enum_comma: ','
   enum_and: y
-  articles: Articulos
-  projects: Proyectos
+  articles: posts
 
 post:
   desktop:
-    previous: Post Anterior
-    next: Post Siguiente
-    back_to_top: Arriba
-    share: Compartir Post
+    previous: <--
+    next: -->
+    back_to_top: arriba
+    share: compartir
   mobile:
-    menu: Menu
-    toc: TOC
-    back_to_top: Top
-    share: Compartir
+    menu: menu
+    toc: toc
+    back_to_top: up
+    share: compartir
 
 search:
-  search: Buscar...
-  no_results: No se encontraron resultados.
+  search: buscar
+  no_results: nada por aquí, prueba otras palabras
 
 pagination:
-  page: Pagina %d de %d
+  page: página %d de %d
 
 comments:
-  no_js: Por favor activa JavaScript para ver el contenido.
+  no_js: activa javascript plox
