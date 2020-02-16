@@ -25,7 +25,7 @@ function animOut(element) {
 		}
 		if(post.test(command)){
                     $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs.substring(4) }});
-                    window.location="/blog";
+                    window.location="/jrnl";
                 }
                 if(/blog/.test(window.location)){
                     if(cmdNargs.length>0) $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs }});

@@ -5,7 +5,7 @@
 # Link to a page that gives an overview of all your projects.
 # This can be an external link (e.g., to you GitHub profile) or to another
 # page within your website.
-projects_url: http://github.com/probberechts
+projects_url: https://chamizo.pro/projects
 
 # Set the page direction to RTL or LTR. default is LTR. (if you set it 'rtl', the 'vazir' font will be loaded.)
 direction: ltr
@@ -17,7 +17,6 @@ nav:
   home: /
   about: /about/
   articles: /archives/
-  projects: projects_url
 
 
 # Links to your social media accounts.
@@ -25,11 +24,11 @@ nav:
 # (see https://fontawesome.com/icons?d=gallery&s=brands);
 # only 'mail' is an exception.
 social_links:
-  github: http://github.com/probberechts/cactus-dark
-  twitter: /
-  facebook: /
-  linkedin: /
-  mail: mailto:name@email.com
+   chrome: ../contact
+   twitter: https://twitter.com/sonrisapunk
+  # facebook: /
+   linkedin: https://www.linkedin.com/in/celerno
+   mail: mailto://celerno@gmail.com
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud

@@ -19,8 +19,6 @@ var serveStatic = require('serve-static');
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 
-app.use(vhost('albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
-app.use(vhost('*.albedofranquicias.com', serveStatic('/home/appmaster/node/www/public/albedo.mx')));
 var pOptions = {
   target: 'http://localhost:4000', 
   changeOrigin:true, 

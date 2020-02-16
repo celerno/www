@@ -34,5 +34,6 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 ``` bash
 $ hexo deploy
 ```
+qué difícil ha sido configurar esto. me siento imbécil.
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
