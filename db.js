@@ -1,5 +1,5 @@
 //PREREQUISITES
-import  mongoose from 'mongoose';
+const  mongoose = require('mongoose');
 const {Model, Schema} = mongoose;
 
 var ObjectId = mongoose.Schema.ObjectId;

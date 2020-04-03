@@ -25,7 +25,7 @@ function animOut(element) {
 		}
 		if(post.test(command)){
                     $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs.substring(4) }});
-                    window.location="/jrnl";
+                    window.location="/blog";
                 }
                 if(/blog/.test(window.location)){
                     if(cmdNargs.length>0) $.ajax({method: "POST",url: "/blog", data: { text: cmdNargs }});
@@ -66,7 +66,6 @@ function animOut(element) {
                 
 
                     var proyectos=function(){
-                        term.echo('mixe       ------    un blog adaptado en lengua mixe[mixe.chamizo.pro]');
                         term.echo('sitio      ------    source de este sitio[github]');
                         term.echo('blog       ------    blog personal / y sobre cosmos en español');
                         term.echo('ruido/noise -----    ruidos de ciudad/city noise');
@@ -104,7 +103,7 @@ function animOut(element) {
                         window.location="http://mixe.chamizo.pro";
                     }
                     else if(command==='blog'){
-                        window.location='/blog';
+                        window.location='/jrnl';
                     }
                     else if(command==='sitio' || command==='site'){
                         term.echo('estás por abandonar esta página...');

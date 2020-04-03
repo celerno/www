@@ -19,8 +19,9 @@ var serveStatic = require('serve-static');
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 
+app.use('/jrnl', serveStatic('/home/appmaster/node/www/hexo/public'));
 var pOptions = {
-  target: 'http://localhost:4000', 
+  target: '/hexo/public', 
   changeOrigin:true, 
   logLevel:'debug', 
   prependPath: false,
@@ -28,8 +29,8 @@ var pOptions = {
 //router:{'localhost:3000':'localhost:4000'}
 };
 
-const blog = proxy(pOptions);
-app.use('/jrnl', blog);
+//const blog = proxy(pOptions);
+//app.use('/jrnl', blog);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +39,7 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 app.use(vhost('coolbox.com.mx', function(req, res, next){if(!req.secure){res.redirect(301, 'https://'+req.headers.host+req.url);}next();}));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+/*
 app.use(vhost('chamizo.pro', function (req, res, next) {
 	if(!req.secure){
 		res.redirect(301,'https://' + req.headers.host + req.url);
@@ -50,7 +51,7 @@ app.use(vhost('*.chamizo.pro', function (req, res, next) {
 		res.redirect(301,'https://' + req.headers.host + req.url);
 	}
 	next();
-})); 
+})); */
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
