@@ -17,6 +17,9 @@ function animOut(element) {
                 var hablapormi=/hablapormi/;
                 var adios = /adios/;
                 var post = /post/;
+                if(/resume/.test(command)){
+                    window.location="/NetResumeDev_CH.pdf";
+		}
                 if(/itza/.test(command)){
 		$('img').attr('src','/pyito.jpg');
 		}
