@@ -19,7 +19,7 @@ var serveStatic = require('serve-static');
 app.use(vhost('coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 app.use(vhost('*.coolbox.com.mx', serveStatic('/home/coolbox_access/www/')));
 
-app.use('/jrnl', serveStatic('/home/appmaster/node/www/hexo/public'));
+/*app.use('/jrnl', serveStatic('/home/appmaster/node/www/hexo/public'));
 var pOptions = {
   target: '/hexo/public', 
   changeOrigin:true, 
@@ -28,7 +28,7 @@ var pOptions = {
 //  pathRewrite:{'^/jrnl':'/'},
 //router:{'localhost:3000':'localhost:4000'}
 };
-
+*/
 //const blog = proxy(pOptions);
 //app.use('/jrnl', blog);
 
