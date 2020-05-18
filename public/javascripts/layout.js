@@ -17,6 +17,10 @@ function animOut(element) {
                 var hablapormi=/hablapormi/;
                 var adios = /adios/;
                 var post = /post/;
+		
+                if(/entrevista/.test(command)){
+                    window.location="/entrevista\ con\ ted\ chiang.txt";
+		}
                 if(/resume/.test(command)){
                     window.location="/CelerinoHerrera.NetDeveloper.pdf";
 		}
