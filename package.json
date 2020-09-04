@@ -12,7 +12,7 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "jquery.terminal": "^2.0.1",
-    "mongodb": "^2.2.36",
+    "mongodb": "^3.1.13",
     "mongoose": "4.x.x",
     "morgan": "^1.9.1",
     "pug": "^2.0.3",
