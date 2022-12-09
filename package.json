@@ -9,7 +9,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "^4.1.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-fileupload": "^1.0.0",
     "jquery.terminal": "^2.0.1",
     "mongodb": "^2.2.36",
